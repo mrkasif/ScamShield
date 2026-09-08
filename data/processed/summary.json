@@ -1,0 +1,38 @@
+{
+  "seed": 42,
+  "n_total": 554,
+  "n_train": 356,
+  "n_validation": 88,
+  "n_test": 110,
+  "by_label": {
+    "scam": 401,
+    "safe": 153
+  },
+  "by_type": {
+    "safe": 153,
+    "bank_impersonation": 94,
+    "kyc": 84,
+    "upi_payment": 52,
+    "delivery": 27,
+    "loan": 26,
+    "other": 20,
+    "phishing": 20,
+    "customer_care": 19,
+    "lottery": 16,
+    "investment": 15,
+    "job": 14,
+    "social_impersonation": 14
+  },
+  "by_language": {
+    "en": 177,
+    "hinglish": 165,
+    "hi": 119,
+    "mr": 93
+  },
+  "by_source": {
+    "synthetic_scamshield": 502,
+    "hf_karanverma19": 52
+  },
+  "test_is_frozen": true,
+  "note": "Do not use test/ for training or model selection."
+}

@@ -1,0 +1,357 @@
+id,text,language,scam_or_safe,scam_type,source,indicators,split
+ss-000001,"PNB: Rs.250.00 debited from a/c XX12 on 01-Sep at POS. If not you, use official PNB app.",en,safe,safe,synthetic_scamshield,none,train
+ss-000002,"Aapka parcel customs me atka hai, ₹35 pay karke release kare",en,scam,delivery,hf_karanverma19,delivery,train
+ss-000003,"Aapka email hack ho gaya, password http://192.0.2.10/login pe reset karo.",hinglish,scam,phishing,synthetic_scamshield,suspicious_url|urgency|sensitive_info_request,train
+ss-000004,"Axis a/c XX47 se Rs.1,200.50 debit 12-Aug ko. Dispute ke liye official app use karo, koi link nahi.",hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000005,Tesla profit sharing India. Invest Rs 5000 via UPI to join.,en,scam,investment,synthetic_scamshield,investment_return|payment_request|urgency,train
+ss-000009,SBI mini statement: last txn Rs.250.00 at grocery store.,en,safe,safe,synthetic_scamshield,none,train
+ss-000016,तुरंत SBI केवाईसी पूरा करें वरना आपका खाता ब्लॉक हो जाएगा http://192.0.2.10/login,hi,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000017,This is SBI official. Your account will be closed. Call and share OTP now.,en,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000018,HDFC कस्टमर केयर से बात करें और पिन शेयर करें।,hi,scam,customer_care,synthetic_scamshield,customer_care|otp_request|bank_impersonation,train
+ss-000021,"Court summons aaya hai, fine http://verify-kyc.example.in/update pe bharo warna arrest.",hinglish,scam,other,synthetic_scamshield,urgency|suspicious_url|impersonation,train
+ss-000023,Your Axis video KYC appointment is booked in the official app only. Ignore other SMS links.,en,safe,safe,synthetic_scamshield,none,train
+ss-000024,HDFC security: unusual login detected. Confirm PIN on http://192.0.2.10/login within 10 minutes.,en,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000028,"Aapka parcel customs me atka hai, ₹35 pay karke release kare please act now",hi,scam,delivery,hf_karanverma19,delivery,train
+ss-000029,मी तुझा मित्र. वॉलेट चोरीला. या UPI वर पैसे पाठव.,mr,scam,social_impersonation,synthetic_scamshield,social_impersonation|payment_request|urgency,train
+ss-000030,बिना कागज़ लोन। पहले GST http://verify-kyc.example.in/update पर चुकाएँ।,hi,scam,loan,synthetic_scamshield,loan_offer|payment_request|suspicious_url|urgency,train
+ss-000031,Your SBI debit card is blocked. Share OTP and login at http://192.0.2.10/login to unblock.,en,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000033,Your Axis KYC is pending. Update now at http://verify-kyc.example.in/update or your account will be frozen today.,en,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000034,"UPI collect request approve karo http://verify-kyc.example.in/update pe, warna paise kat jayenge.",hinglish,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000035,SBI अधिकृत संदेश: पिन शेअर करा आणि http://verify-kyc.example.in/update उघडा.,mr,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000037,Aapke account me 1 rupee pending hai Google Pay. http://verify-kyc.example.in/update pe pay karke 25000 claim karo.,hinglish,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000038,You are pre-approved for an instant loan. Click http://verify-kyc.example.in/update and pay processing fee.,en,scam,loan,synthetic_scamshield,loan_offer|payment_request|suspicious_url|urgency,train
+ss-000039,"Axis: Rs.1,200.50 debited from a/c XX47 on 12-Aug at POS. If not you, use official Axis app.",en,safe,safe,synthetic_scamshield,none,train
+ss-000040,Your ICICI KYC is pending. Update now at http://192.0.2.10/login or your account will be frozen today.,en,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000041,Collect cashback on PhonePe: enter UPI PIN at http://192.0.2.10/login now.,en,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000042,पुस्तकें पुस्तकालय में जमा कर दो।,hi,safe,safe,synthetic_scamshield,none,train
+ss-000044,Flipkart mega win. Pay Rs 99 delivery for your iPhone at http://192.0.2.10/login.,en,scam,lottery,synthetic_scamshield,prize_lottery|payment_request|urgency,train
+ss-000046,"माँ, मैं होस्टल पहुँच गया। शाम को फोन करूँगा।",hi,safe,safe,synthetic_scamshield,none,train
+ss-000048,तुरंत HDFC केवाईसी पूरा करें वरना आपका खाता ब्लॉक हो जाएगा http://verify-kyc.example.in/update,hi,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000049,Urgent: complete HDFC video KYC on http://192.0.2.10/login to keep UPI active.,en,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000051,"SBI helpline se call hai, ATM PIN verify karna hai abhi.",hinglish,scam,customer_care,synthetic_scamshield,customer_care|otp_request|bank_impersonation,train
+ss-000053,"OTP [OTP] hai login ke liye, share mat karna.",hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000054,SBI KYC pending hai. Jaldi http://192.0.2.10/login pe update karo warna account band ho jayega.,hinglish,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000055,"आपका बैंक खाता सत्यापन लंबित है, कृपया तुरंत अपडेट करें abhi kare",hi,scam,bank_impersonation,hf_karanverma19,urgency|bank_impersonation,train
+ss-000056,Axis आधिकारिक ऐप से ही बैंकिंग करें। कॉल पर पिन न बताएँ।,hi,safe,safe,synthetic_scamshield,none,train
+ss-000058,"आई, घरची भाजी आली. पैसे पाठवू नकोस.",mr,safe,safe,synthetic_scamshield,none,train
+ss-000059,Your payment of ₹899 has been received,hinglish,safe,safe,hf_karanverma19,none,train
+ss-000061,Your ICICI KYC is pending. Update now at http://verify-kyc.example.in/update or your account will be frozen today.,en,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000062,"Investment plan 40 percent return, jaldi http://192.0.2.10/login pe join karo.",hinglish,scam,investment,synthetic_scamshield,investment_return|payment_request|urgency,train
+ss-000063,Your Aadhaar is suspended. Re-verify at http://verify-kyc.example.in/update.,en,scam,phishing,synthetic_scamshield,suspicious_url|urgency|sensitive_info_request,train
+ss-000066,HDFC आधिकारिक ऐप से ही बैंकिंग करें। कॉल पर पिन न बताएँ।,hi,safe,safe,synthetic_scamshield,none,train
+ss-000067,Urgent: complete ICICI video KYC on http://192.0.2.10/login to keep UPI active.,en,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000068,"ICICI: UPI is active. Do not share UPI PIN with anyone, including people claiming to be staff.",en,safe,safe,synthetic_scamshield,none,train
+ss-000071,Paytm रिफंड अटका है। http://verify-kyc.example.in/update पर पिन डालकर पाएं।,hi,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000072,"SBI se call aayega mat sochna, ATM PIN bata dena. Pehle http://verify-kyc.example.in/update pe verify karo.",hinglish,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000074,ICICI खाते ब्लॉक होणार आहे. OTP http://verify-kyc.example.in/update वर द्या.,mr,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000075,आपको PhonePe पर ₹25000 मिले हैं। क्रेडिट के लिए UPI पिन http://verify-kyc.example.in/update पर दर्ज करें।,hi,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000076,"PhonePe se refund aaya hai, UPI PIN http://verify-kyc.example.in/update pe daalo warna cancel ho jayega.",hinglish,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000077,पार्सल कस्टम में अटका है। ₹35 http://192.0.2.10/login पर दें।,hi,scam,delivery,synthetic_scamshield,delivery_threat|payment_request|suspicious_url,train
+ss-000079,डॉक्टर का अपॉइंटमेंट सुबह 10 बजे है।,hi,safe,safe,synthetic_scamshield,none,train
+ss-000082,IRCTC: ticket booked successfully. Show this SMS at boarding.,en,safe,safe,synthetic_scamshield,none,train
+ss-000083,"HDFC se call aayega mat sochna, ATM PIN bata dena. Pehle http://verify-kyc.example.in/update pe verify karo.",hinglish,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000085,Instagram: your account will be deleted. Login at http://verify-kyc.example.in/update to verify.,en,scam,social_impersonation,synthetic_scamshield,social_impersonation|payment_request|urgency,train
+ss-000086,Kal college 9 baje milte hain.,hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000087,"Aapka parcel customs me atka hai, Rs 35 pay karke release kare http://verify-kyc.example.in/update",hinglish,scam,delivery,synthetic_scamshield,delivery_threat|payment_request|suspicious_url,train
+ss-000088,Axis KYC pending hai. Jaldi http://verify-kyc.example.in/update pe update karo warna account band ho jayega.,hinglish,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000093,आपका ICICI कार्ड ब्लॉक है। अनब्लॉक करने हेतु http://192.0.2.10/login खोलें।,hi,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000095,Your HDFC KYC is pending. Update now at http://verify-kyc.example.in/update or your account will be frozen today.,en,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000100,Aapka HDFC account block ho raha hai. OTP share karo aur http://192.0.2.10/login kholo.,hinglish,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000101,"Aapka ICICI ATM card block ho gaya hai, details update kare http://verify-kyc.example.in/update",hinglish,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000102,Aapka SBI account block ho raha hai. OTP share karo aur http://verify-kyc.example.in/update kholo.,hinglish,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000104,Your SBI video KYC appointment is booked in the official app only. Ignore other SMS links.,en,safe,safe,synthetic_scamshield,none,train
+ss-000105,Your Google Pay payment of Rs 1 failed. Pay the remaining Rs 1 on http://192.0.2.10/login to receive a refund.,en,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000106,Meeting moved to 4pm tomorrow in college lab.,en,safe,safe,synthetic_scamshield,none,train
+ss-000107,उद्याची परीक्षा सकाळी १० वाजता आहे.,mr,safe,safe,synthetic_scamshield,none,train
+ss-000108,"KBC me 25 lakh jeete ho, processing tax http://192.0.2.10/login pe bharo.",hinglish,scam,lottery,synthetic_scamshield,prize_lottery|payment_request|urgency,train
+ss-000109,"iPhone free mila hai, Rs 99 http://192.0.2.10/login pe delivery fee do.",hinglish,scam,lottery,synthetic_scamshield,prize_lottery|payment_request|urgency,train
+ss-000110,"Aapka email hack ho gaya, password http://verify-kyc.example.in/update pe reset karo.",hinglish,scam,phishing,synthetic_scamshield,suspicious_url|urgency|sensitive_info_request,train
+ss-000111,"HDFC se call aayega mat sochna, ATM PIN bata dena. Pehle http://192.0.2.10/login pe verify karo.",hinglish,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000112,"SBI: Rs.250.00 credited to a/c XX12 on 06-Sep. Avl Bal Rs.5,000.00. Do not share OTP.",en,safe,safe,synthetic_scamshield,none,train
+ss-000114,तुरंत ICICI केवाईसी पूरा करें वरना आपका खाता ब्लॉक हो जाएगा http://verify-kyc.example.in/update,hi,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000115,"FASTag recharge Axis se ho gaya Rs.1,200.50.",hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000116,Collect cashback on Google Pay: enter UPI PIN at http://192.0.2.10/login now.,en,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000118,Your Google Pay payment of Rs 1 failed. Pay the remaining Rs 1 on http://verify-kyc.example.in/update to receive a refund.,en,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000119,"SBI: Rs.80.00 debited from a/c XX90 on 28-Jul at POS. If not you, use official SBI app.",en,safe,safe,synthetic_scamshield,none,train
+ss-000120,"Instagram account delete ho raha hai, http://verify-kyc.example.in/update pe login karke save karo.",hinglish,scam,social_impersonation,synthetic_scamshield,social_impersonation|payment_request|urgency,train
+ss-000121,"Axis व्हिडिओ केवायसी http://192.0.2.10/login वर पूर्ण करा, नाहीतर यूपीआय बंद होईल.",mr,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000122,You won a KBC prize of Rs 25 lakh. Pay processing tax at http://verify-kyc.example.in/update.,en,scam,lottery,synthetic_scamshield,prize_lottery|payment_request|urgency,train
+ss-000123,Google Pay वर पैसे अडकले आहेत. UPI पिन http://verify-kyc.example.in/update वर टाका.,mr,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000124,इन्स्टाग्राम अकाउंट बंद होगा। http://verify-kyc.example.in/update पर लॉगिन करो।,hi,scam,social_impersonation,synthetic_scamshield,social_impersonation|payment_request|urgency,train
+ss-000127,HDFC KYC पूर्ण आहे. लिंक उघडू नका. OTP देऊ नका.,mr,safe,safe,synthetic_scamshield,none,train
+ss-000128,Courier: address incomplete. Pay extra freight on http://192.0.2.10/login now.,en,scam,delivery,synthetic_scamshield,delivery_threat|payment_request|suspicious_url,train
+ss-000130,"Aapka ICICI ATM card block ho gaya hai, details update kare http://192.0.2.10/login",hinglish,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000131,कॉलेज की छुट्टी सोमवार को है।,hi,safe,safe,synthetic_scamshield,none,train
+ss-000132,आपका Axis KYC समाप्त हो गया है। खाता बंद होने से पहले http://verify-kyc.example.in/update पर अपडेट करें।,hi,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000133,"Aapka SBI KYC expire ho gaya hai, account block hone se pehle link open karo http://192.0.2.10/login.",hinglish,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000134,झटपट कर्ज मंजूर. फी http://verify-kyc.example.in/update वर भरा.,mr,scam,loan,synthetic_scamshield,loan_offer|payment_request|suspicious_url|urgency,train
+ss-000135,Stock tip: guaranteed 40% return this week. Pay advisory fee now.,en,scam,investment,synthetic_scamshield,investment_return|payment_request|urgency,train
+ss-000136,"HDFC: UPI is active. Do not share UPI PIN with anyone, including people claiming to be staff.",en,safe,safe,synthetic_scamshield,none,train
+ss-000137,"Google Pay payment successful hai, UPI ref [REF].",hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000138,"HDFC व्हिडिओ केवायसी http://verify-kyc.example.in/update वर पूर्ण करा, नाहीतर यूपीआय बंद होईल.",mr,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000139,ICICI खाता संदिग्ध गतिविधि के कारण बंद होगा। http://verify-kyc.example.in/update पर OTP डालें।,hi,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000141,ICICI अधिकृत संदेश: पिन शेअर करा आणि http://192.0.2.10/login उघडा.,mr,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000142,रिफंड मिळवण्यासाठी http://192.0.2.10/login वर पेमेंट कन्फर्म करा.,mr,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000143,"आपका बैंक खाता सत्यापन लंबित है, कृपया तुरंत अपडेट करें immediately",hinglish,scam,bank_impersonation,hf_karanverma19,urgency|bank_impersonation,train
+ss-000144,"Aapka KYC expire ho gaya hai, turant link kholo http://192.0.2.10/login nahi to banking ruk jayegi.",hinglish,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000145,Amazon customer care: your order failed. Call this number and share OTP.,en,scam,customer_care,synthetic_scamshield,customer_care|otp_request|bank_impersonation,train
+ss-000146,Work from home: Rs 1500/day. Pay Rs 499 registration at http://192.0.2.10/login.,en,scam,job,synthetic_scamshield,job_offer|payment_request|sensitive_info_request,train
+ss-000147,ICICI KYC पूर्ण आहे. लिंक उघडू नका. OTP देऊ नका.,mr,safe,safe,synthetic_scamshield,none,train
+ss-000148,पार्सल कस्टम्स मध्ये अडकले. ₹35 http://192.0.2.10/login वर भरा.,mr,scam,delivery,synthetic_scamshield,delivery_threat|payment_request|suspicious_url,train
+ss-000149,"दवाई लेना मत भूलना, लिंक नहीं भेज रहा।",hi,safe,safe,synthetic_scamshield,none,train
+ss-000150,आपको Paytm पर ₹25000 मिले हैं। क्रेडिट के लिए UPI पिन http://verify-kyc.example.in/update पर दर्ज करें।,hi,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000151,Urgent: complete HDFC video KYC on http://verify-kyc.example.in/update to keep UPI active.,en,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000152,"Light bill official app se paid hai, koi link nahi hai.",hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000153,Urgent: complete SBI video KYC on http://192.0.2.10/login to keep UPI active.,en,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000157,आपका HDFC KYC समाप्त हो गया है। खाता बंद होने से पहले http://192.0.2.10/login पर अपडेट करें।,hi,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000159,HDFC KYC pending hai. Jaldi http://192.0.2.10/login pe update karo warna account band ho jayega.,hinglish,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000160,"You are selected for instant loan approval, click to proceed jaldi kare",hinglish,scam,loan,hf_karanverma19,urgency|suspicious_url|loan,train
+ss-000161,"ICICI व्हिडिओ केवायसी http://192.0.2.10/login वर पूर्ण करा, नाहीतर यूपीआय बंद होईल.",mr,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000162,Google is hiring data entry. WhatsApp your Aadhaar and bank details.,en,scam,job,synthetic_scamshield,job_offer|payment_request|sensitive_info_request,train
+ss-000163,"ICICI helpline se call hai, ATM PIN verify karna hai abhi.",hinglish,scam,customer_care,synthetic_scamshield,customer_care|otp_request|bank_impersonation,train
+ss-000164,बिजली बिल आधिकारिक ऐप से चुकाया गया। कोई लिंक नहीं है।,hi,safe,safe,synthetic_scamshield,none,train
+ss-000166,Your ICICI debit card is blocked. Share OTP and login at http://verify-kyc.example.in/update to unblock.,en,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000170,"Aapka HDFC KYC expire ho gaya hai, account block hone se pehle link open karo http://verify-kyc.example.in/update.",hinglish,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000172,PhonePe वर पैसे अडकले आहेत. UPI पिन http://192.0.2.10/login वर टाका.,mr,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000174,बिजली 2 घंटे में कटेगी। बिल http://192.0.2.10/login पर भरें।,hi,scam,other,synthetic_scamshield,urgency|suspicious_url|impersonation,train
+ss-000175,तुमचे ICICI KYC कालबाह्य झाले आहे. खाते ब्लॉक होण्यापूर्वी http://192.0.2.10/login उघडा.,mr,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000177,Income tax refund pending. Submit PAN on http://192.0.2.10/login immediately.,en,scam,phishing,synthetic_scamshield,suspicious_url|urgency|sensitive_info_request,train
+ss-000179,PhonePe रिफंड अटका है। http://verify-kyc.example.in/update पर पिन डालकर पाएं।,hi,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000180,No documents loan disbursed today. First pay GST on http://verify-kyc.example.in/update.,en,scam,loan,synthetic_scamshield,loan_offer|payment_request|suspicious_url|urgency,train
+ss-000184,"Bank of Baroda: Rs.1,200.50 debited from a/c XX47 on 12-Aug at POS. If not you, use official Bank of Baroda app.",en,safe,safe,synthetic_scamshield,none,train
+ss-000185,Your ICICI debit card is blocked. Share OTP and login at http://192.0.2.10/login to unblock.,en,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000186,HDFC अधिकृत संदेश: पिन शेअर करा आणि http://verify-kyc.example.in/update उघडा.,mr,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000189,आपका ICICI कार्ड ब्लॉक है। अनब्लॉक करने हेतु http://verify-kyc.example.in/update खोलें।,hi,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000191,This is ICICI official. Your account will be closed. Call and share OTP now.,en,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000192,"Dear customer, your HDFC KYC has expired. Click http://verify-kyc.example.in/update immediately to prevent account blocking.",en,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000193,"You are selected for instant loan approval, click to proceed please act now",hi,scam,loan,hf_karanverma19,suspicious_url|loan,train
+ss-000194,"KBC me 25 lakh jeete ho, processing tax http://verify-kyc.example.in/update pe bharo.",hinglish,scam,lottery,synthetic_scamshield,prize_lottery|payment_request|urgency,train
+ss-000195,"Dear customer, your SBI KYC has expired. Click http://192.0.2.10/login immediately to prevent account blocking.",en,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000196,तुरंत HDFC केवाईसी पूरा करें वरना आपका खाता ब्लॉक हो जाएगा http://192.0.2.10/login,hi,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000197,Aapka Axis account block ho raha hai. OTP share karo aur http://192.0.2.10/login kholo.,hinglish,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000200,तुमचे आधार निलंबित. http://verify-kyc.example.in/update वर पुन्हा पडताळणी करा.,mr,scam,phishing,synthetic_scamshield,suspicious_url|urgency|sensitive_info_request,train
+ss-000201,"You received Rs 50,000. Confirm UPI PIN on http://192.0.2.10/login to credit your PhonePe wallet.",en,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000203,बक्षीस मिळवण्यासाठी बँक डिटेल्स आणि OTP द्या.,mr,scam,lottery,synthetic_scamshield,prize_lottery|payment_request|urgency,train
+ss-000204,"Salary aa gayi account me, payslip HR portal pe hai.",hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000206,Axis केवाईसी पूरा है। लिंक पर क्लिक न करें और ओटीपी साझा न करें।,hi,safe,safe,synthetic_scamshield,none,train
+ss-000209,Your loan is sanctioned. Transfer insurance premium to release funds.,en,scam,loan,synthetic_scamshield,loan_offer|payment_request|suspicious_url|urgency,train
+ss-000210,पत्ता अपुरा. अतिरिक्त भाडे http://192.0.2.10/login वर द्या.,mr,scam,delivery,synthetic_scamshield,delivery_threat|payment_request|suspicious_url,train
+ss-000211,Google Pay पेमेंट यशस्वी. संदर्भ [REF].,mr,safe,safe,synthetic_scamshield,none,train
+ss-000212,बिल अधिकृत अॅपने भरले. काही करायची गरज नाही.,mr,safe,safe,synthetic_scamshield,none,train
+ss-000214,"Axis KYC already complete hai. Koi link mat kholna, OTP mat dena.",hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000216,"UPI PIN kabhi share mat karna, refund ke naam pe bhi nahi.",hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000217,"आपका KYC पूरा नहीं है, तुरंत अपडेट करें please act now",en,scam,kyc,hf_karanverma19,urgency|kyc_language|kyc,train
+ss-000220,"Mummy, hostel pahunch gaya, shaam ko call karta hoon.",hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000222,Library books are due Friday. Renew on the college portal.,en,safe,safe,synthetic_scamshield,none,train
+ss-000223,वाढदिवस मंगल भवन. UPI नको.,mr,safe,safe,synthetic_scamshield,none,train
+ss-000225,Your PhonePe payment of Rs 1 failed. Pay the remaining Rs 1 on http://verify-kyc.example.in/update to receive a refund.,en,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000226,"Aapka parcel customs me atka hai, ₹35 pay karke release kare jaldi kare",hinglish,scam,delivery,hf_karanverma19,urgency|delivery,train
+ss-000227,"Aapka KYC expire ho gaya hai, turant link kholo http://verify-kyc.example.in/update nahi to banking ruk jayegi.",hinglish,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000229,Aapka SBI account block ho raha hai. OTP share karo aur http://192.0.2.10/login kholo.,hinglish,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000230,बिजली 2 घंटे में कटेगी। बिल http://verify-kyc.example.in/update पर भरें।,hi,scam,other,synthetic_scamshield,urgency|suspicious_url|impersonation,train
+ss-000231,"Aapka ICICI KYC expire ho gaya hai, account block hone se pehle link open karo http://verify-kyc.example.in/update.",hinglish,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000234,"Stock tips guaranteed profit, advisory fee UPI pe bhejo.",hinglish,scam,investment,synthetic_scamshield,investment_return|payment_request|urgency,train
+ss-000235,HDFC OTP for login is [OTP]. Do not share with anyone.,en,safe,safe,synthetic_scamshield,none,train
+ss-000237,आपका Google Pay भुगतान सफल रहा। रेफरेंस [REF]।,hi,safe,safe,synthetic_scamshield,none,train
+ss-000238,"Happy birthday! Dinner at home tonight, no need to transfer money.",en,safe,safe,synthetic_scamshield,none,train
+ss-000241,24 घंटे में पैसा डबल। http://192.0.2.10/login पर निवेश करें।,hi,scam,investment,synthetic_scamshield,investment_return|payment_request|urgency,train
+ss-000243,ग्राहक सेवा: ऑर्डर अडकला. OTP सांगा.,mr,scam,customer_care,synthetic_scamshield,customer_care|otp_request|bank_impersonation,train
+ss-000244,Axis खाते ब्लॉक होणार आहे. OTP http://192.0.2.10/login वर द्या.,mr,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000245,Your parcel is stuck in customs. Pay Rs 35 at http://192.0.2.10/login to release.,en,scam,delivery,synthetic_scamshield,delivery_threat|payment_request|suspicious_url,train
+ss-000246,"You are selected for instant loan approval, click to proceed please act now",en,scam,loan,hf_karanverma19,suspicious_url|loan,train
+ss-000247,ICICI खाते ब्लॉक होणार आहे. OTP http://192.0.2.10/login वर द्या.,mr,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000248,"Job ke liye college portal use hua, koi registration fee nahi.",hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000250,तुमचे HDFC KYC कालबाह्य झाले आहे. खाते ब्लॉक होण्यापूर्वी http://verify-kyc.example.in/update उघडा.,mr,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000252,"आपका KYC पूरा नहीं है, तुरंत अपडेट करें",hi,scam,kyc,hf_karanverma19,urgency|kyc_language|kyc,train
+ss-000253,तुमचे ICICI KYC कालबाह्य झाले आहे. खाते ब्लॉक होण्यापूर्वी http://verify-kyc.example.in/update उघडा.,mr,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000257,Electricity will be cut in 2 hours. Pay pending bill only on http://verify-kyc.example.in/update.,en,scam,other,synthetic_scamshield,urgency|suspicious_url|impersonation,train
+ss-000258,"Axis: Rs.3,499.00 debited from a/c XX33 on 06-Sep at POS. If not you, use official Axis app.",en,safe,safe,synthetic_scamshield,none,train
+ss-000260,"Aapka HDFC ATM card block ho gaya hai, details update kare http://verify-kyc.example.in/update",hinglish,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000261,"Aapka ATM card block ho gaya hai, details update kare please act now",hi,scam,bank_impersonation,hf_karanverma19,bank_impersonation,train
+ss-000266,"Axis: EMI of Rs.1,200.50 auto-debited. No action needed.",en,safe,safe,synthetic_scamshield,none,train
+ss-000268,Bus pass renew ho gaya.,hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000269,"HDFC a/c XX47 se Rs.1,200.50 debit 12-Aug ko. Dispute ke liye official app use karo, koi link nahi.",hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000270,Your HDFC KYC is pending. Update now at http://192.0.2.10/login or your account will be frozen today.,en,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000272,HDFC helpline: press 1 and tell us your CVV to verify the card.,en,scam,customer_care,synthetic_scamshield,customer_care|otp_request|bank_impersonation,train
+ss-000275,"You are selected for instant loan approval, click to proceed http://192.0.2.10/login",hinglish,scam,loan,synthetic_scamshield,loan_offer|payment_request|suspicious_url|urgency,train
+ss-000277,"Paytm se refund aaya hai, UPI PIN http://verify-kyc.example.in/update pe daalo warna cancel ho jayega.",hinglish,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000280,"HDFC helpline se call hai, ATM PIN verify karna hai abhi.",hinglish,scam,customer_care,synthetic_scamshield,customer_care|otp_request|bank_impersonation,train
+ss-000281,Your train ticket has been booked successfully,hinglish,safe,safe,hf_karanverma19,none,train
+ss-000283,"Aapka ATM card block ho gaya hai, details update kare jaldi kare",en,scam,bank_impersonation,hf_karanverma19,urgency|bank_impersonation,train
+ss-000284,"Instant loan approve ho gaya, processing fee http://verify-kyc.example.in/update pe do.",hinglish,scam,loan,synthetic_scamshield,loan_offer|payment_request|suspicious_url|urgency,train
+ss-000288,"SBI: Rs.250.00 debited from a/c XX12 on 01-Sep at POS. If not you, use official SBI app.",en,safe,safe,synthetic_scamshield,none,train
+ss-000290,आपका HDFC कार्ड ब्लॉक है। अनब्लॉक करने हेतु http://192.0.2.10/login खोलें।,hi,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000292,Your loan EMI is paid. HDFC will not call to ask for a processing fee refund.,en,safe,safe,synthetic_scamshield,none,train
+ss-000293,Your SIM will be blocked under new TRAI rules. Recharge KYC at http://192.0.2.10/login.,en,scam,other,synthetic_scamshield,urgency|suspicious_url|impersonation,train
+ss-000294,ट्रेन वेळेवर आहे. प्लॅटफॉर्म २.,mr,safe,safe,synthetic_scamshield,none,train
+ss-000296,"आयकर रिफंड http://verify-kyc.example.in/update पर क्लेम करें, तुरंत PAN डालें।",hi,scam,phishing,synthetic_scamshield,suspicious_url|urgency|sensitive_info_request,train
+ss-000298,बस पास नूतनीकरण झाले.,mr,safe,safe,synthetic_scamshield,none,train
+ss-000301,"PhonePe se refund aaya hai, UPI PIN http://192.0.2.10/login pe daalo warna cancel ho jayega.",hinglish,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000302,SBI खाता संदिग्ध गतिविधि के कारण बंद होगा। http://192.0.2.10/login पर OTP डालें।,hi,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000303,SBI security: unusual login detected. Confirm PIN on http://192.0.2.10/login within 10 minutes.,en,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000304,Your parcel has been delivered successfully.,en,safe,safe,synthetic_scamshield,none,train
+ss-000305,Flipkart mega win. Pay Rs 99 delivery for your iPhone at http://verify-kyc.example.in/update.,en,scam,lottery,synthetic_scamshield,prize_lottery|payment_request|urgency,train
+ss-000306,"ITR refund pending hai, PAN http://192.0.2.10/login pe submit karo jaldi.",hinglish,scam,phishing,synthetic_scamshield,suspicious_url|urgency|sensitive_info_request,train
+ss-000307,SBI: खाते XX12 मध्ये ₹250.00 जमा. OTP कोणाला देऊ नका.,mr,safe,safe,synthetic_scamshield,none,train
+ss-000308,Axis security: unusual login detected. Confirm PIN on http://192.0.2.10/login within 10 minutes.,en,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000310,"You received Rs 50,000. Confirm UPI PIN on http://verify-kyc.example.in/update to credit your PhonePe wallet.",en,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000314,SBI खाते ब्लॉक होणार आहे. OTP http://verify-kyc.example.in/update वर द्या.,mr,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000316,तुमचे SBI KYC कालबाह्य झाले आहे. खाते ब्लॉक होण्यापूर्वी http://verify-kyc.example.in/update उघडा.,mr,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000317,"Class cancel hai, Monday ko extra lecture.",hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000318,"Bhai phone chala gaya, is UPI pe 4000 bhej de jaldi.",hinglish,scam,social_impersonation,synthetic_scamshield,social_impersonation|payment_request|urgency,train
+ss-000319,"Dear customer, your ICICI KYC has expired. Click http://192.0.2.10/login immediately to prevent account blocking.",en,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000320,आपका Axis कार्ड ब्लॉक है। अनब्लॉक करने हेतु http://verify-kyc.example.in/update खोलें।,hi,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000321,HDFC हेल्पलाइन: CVV द्या म्हणजे कार्ड सुरू होईल.,mr,scam,customer_care,synthetic_scamshield,customer_care|otp_request|bank_impersonation,train
+ss-000322,अधिकृत बँक अॅप वापरा. कॉलवर पिन सांगू नका.,mr,safe,safe,synthetic_scamshield,none,train
+ss-000323,Axis अधिकृत संदेश: पिन शेअर करा आणि http://verify-kyc.example.in/update उघडा.,mr,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000326,HDFC खाता संदिग्ध गतिविधि के कारण बंद होगा। http://verify-kyc.example.in/update पर OTP डालें।,hi,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000330,"You are selected for instant loan approval, click to proceed immediately",hi,scam,loan,hf_karanverma19,urgency|suspicious_url|loan,train
+ss-000332,"ICICI व्हिडिओ केवायसी http://verify-kyc.example.in/update वर पूर्ण करा, नाहीतर यूपीआय बंद होईल.",mr,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000333,"WiFi reset hostel office ne kiya, link nahi hai.",hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000336,आपका SBI KYC समाप्त हो गया है। खाता बंद होने से पहले http://192.0.2.10/login पर अपडेट करें।,hi,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000338,"Axis a/c XX33 se Rs.3,499.00 debit 06-Sep ko. Dispute ke liye official app use karo, koi link nahi.",hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000339,HDFC खाते ब्लॉक होणार आहे. OTP http://verify-kyc.example.in/update वर द्या.,mr,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000340,"Bank of Baroda a/c XX33 se Rs.3,499.00 debit 06-Sep ko. Dispute ke liye official app use karo, koi link nahi.",hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000341,"Package hold pe hai, OTP do aur http://192.0.2.10/login pe fee bharo.",hinglish,scam,delivery,synthetic_scamshield,delivery_threat|payment_request|suspicious_url,train
+ss-000342,"Court summons aaya hai, fine http://192.0.2.10/login pe bharo warna arrest.",hinglish,scam,other,synthetic_scamshield,urgency|suspicious_url|impersonation,train
+ss-000344,"HDFC व्हिडिओ केवायसी http://192.0.2.10/login वर पूर्ण करा, नाहीतर यूपीआय बंद होईल.",mr,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000347,पुस्तके लायब्ररीत जमा कर.,mr,safe,safe,synthetic_scamshield,none,train
+ss-000350,"You received Rs 50,000. Confirm UPI PIN on http://192.0.2.10/login to credit your Google Pay wallet.",en,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000351,Axis खाते ब्लॉक होणार आहे. OTP http://verify-kyc.example.in/update वर द्या.,mr,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000355,"SIM block ho jayegi TRAI ke hisaab se, http://192.0.2.10/login pe KYC karo.",hinglish,scam,other,synthetic_scamshield,urgency|suspicious_url|impersonation,train
+ss-000356,"SBI व्हिडिओ केवायसी http://192.0.2.10/login वर पूर्ण करा, नाहीतर यूपीआय बंद होईल.",mr,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000357,Thank you for your purchase.,en,safe,safe,synthetic_scamshield,none,train
+ss-000360,Your parcel has been delivered successfully,hi,safe,safe,hf_karanverma19,none,train
+ss-000361,कक्षा 11 बजे है। नोट्स ला देना।,hi,safe,safe,synthetic_scamshield,none,train
+ss-000362,"Mum, I reached campus. Call you after class.",en,safe,safe,synthetic_scamshield,none,train
+ss-000363,Your Paytm payment of Rs.80.00 to Merchant is successful. UPI Ref [REF].,en,safe,safe,synthetic_scamshield,none,train
+ss-000364,आपको Google Pay पर ₹25000 मिले हैं। क्रेडिट के लिए UPI पिन http://verify-kyc.example.in/update पर दर्ज करें।,hi,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000366,"आपका KYC पूरा नहीं है, तुरंत अपडेट करें",en,scam,kyc,hf_karanverma19,urgency|kyc_language|kyc,train
+ss-000368,कूरियर: अतिरिक्त शुल्क http://192.0.2.10/login पर चुकाएँ वरना वापस जाएगा।,hi,scam,delivery,synthetic_scamshield,delivery_threat|payment_request|suspicious_url,train
+ss-000369,"आपका KYC पूरा नहीं है, तुरंत अपडेट करें abhi kare",hi,scam,kyc,hf_karanverma19,urgency|kyc_language|kyc,train
+ss-000370,कूरियर: अतिरिक्त शुल्क http://verify-kyc.example.in/update पर चुकाएँ वरना वापस जाएगा।,hi,scam,delivery,synthetic_scamshield,delivery_threat|payment_request|suspicious_url,train
+ss-000371,PhonePe वर पैसे अडकले आहेत. UPI पिन http://verify-kyc.example.in/update वर टाका.,mr,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000374,SBI केवाईसी पूरा है। लिंक पर क्लिक न करें और ओटीपी साझा न करें।,hi,safe,safe,synthetic_scamshield,none,train
+ss-000375,Your Axis KYC is pending. Update now at http://192.0.2.10/login or your account will be frozen today.,en,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000377,ऑर्डर भेज दिया गया है। आधिकारिक ऐप में ट्रैक करें।,hi,safe,safe,synthetic_scamshield,none,train
+ss-000378,Aapke account me 1 rupee pending hai PhonePe. http://192.0.2.10/login pe pay karke 25000 claim karo.,hinglish,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000380,"Aapka ATM card block ho gaya hai, details update kare abhi kare",en,scam,bank_impersonation,hf_karanverma19,bank_impersonation,train
+ss-000382,"WiFi password was reset by the hostel office. Ask the warden, not a link.",en,safe,safe,synthetic_scamshield,none,train
+ss-000383,Your HDFC video KYC appointment is booked in the official app only. Ignore other SMS links.,en,safe,safe,synthetic_scamshield,none,train
+ss-000384,Your Aadhaar is suspended. Re-verify at http://192.0.2.10/login.,en,scam,phishing,synthetic_scamshield,suspicious_url|urgency|sensitive_info_request,train
+ss-000385,Google Pay रिफंड अटका है। http://verify-kyc.example.in/update पर पिन डालकर पाएं।,hi,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000386,Axis खाता संदिग्ध गतिविधि के कारण बंद होगा। http://192.0.2.10/login पर OTP डालें।,hi,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000387,Your electricity bill of Rs.250.00 was paid via the official app.,en,safe,safe,synthetic_scamshield,none,train
+ss-000389,Official Axis app se hi login karo. Customer care OTP nahi mangta.,hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000390,Collect cashback on Paytm: enter UPI PIN at http://192.0.2.10/login now.,en,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000391,आपका ईमेल हैंग हो गया है। http://verify-kyc.example.in/update पर पासवर्ड रीसेट करें।,hi,scam,phishing,synthetic_scamshield,suspicious_url|urgency|sensitive_info_request,train
+ss-000392,"Aapka SBI KYC expire ho gaya hai, account block hone se pehle link open karo http://verify-kyc.example.in/update.",hinglish,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000393,"Axis se call aayega mat sochna, ATM PIN bata dena. Pehle http://verify-kyc.example.in/update pe verify karo.",hinglish,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000395,आपका ICICI KYC समाप्त हो गया है। खाता बंद होने से पहले http://verify-kyc.example.in/update पर अपडेट करें।,hi,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000400,"Aapka HDFC ATM card block ho gaya hai, details update kare http://192.0.2.10/login",hinglish,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000401,"आपका KYC पूरा नहीं है, तुरंत अपडेट करें immediately",en,scam,kyc,hf_karanverma19,urgency|kyc_language|kyc,train
+ss-000402,डेटा एंट्री जॉब कन्फर्म। आधार और पासबुक फोटो भेजो।,hi,scam,job,synthetic_scamshield,job_offer|payment_request|sensitive_info_request,train
+ss-000403,"You are selected for instant loan approval, click to proceed http://verify-kyc.example.in/update",hinglish,scam,loan,synthetic_scamshield,loan_offer|payment_request|suspicious_url|urgency,train
+ss-000404,Axis KYC pending hai. Jaldi http://192.0.2.10/login pe update karo warna account band ho jayega.,hinglish,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000406,Collect cashback on Paytm: enter UPI PIN at http://verify-kyc.example.in/update now.,en,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000408,Aapka ICICI account block ho raha hai. OTP share karo aur http://verify-kyc.example.in/update kholo.,hinglish,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000409,HDFC KYC is already complete. We will never ask you to click a link or share OTP.,en,safe,safe,synthetic_scamshield,none,train
+ss-000410,"Package hold pe hai, OTP do aur http://verify-kyc.example.in/update pe fee bharo.",hinglish,scam,delivery,synthetic_scamshield,delivery_threat|payment_request|suspicious_url,train
+ss-000411,Courier wala kehta hai extra charge http://verify-kyc.example.in/update pe do warna return.,hinglish,scam,delivery,synthetic_scamshield,delivery_threat|payment_request|suspicious_url,train
+ss-000412,आपका HDFC कार्ड ब्लॉक है। अनब्लॉक करने हेतु http://verify-kyc.example.in/update खोलें।,hi,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000413,"ICICI: Rs.80.00 debited from a/c XX90 on 28-Jul at POS. If not you, use official ICICI app.",en,safe,safe,synthetic_scamshield,none,train
+ss-000414,Urgent: complete SBI video KYC on http://verify-kyc.example.in/update to keep UPI active.,en,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000415,"ICICI KYC already complete hai. Koi link mat kholna, OTP mat dena.",hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000417,"ICICI a/c XX12 se Rs.250.00 debit 01-Sep ko. Dispute ke liye official app use karo, koi link nahi.",hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000418,Your BHIM cashback of Rs.10 is added. Check the official app.,en,safe,safe,synthetic_scamshield,none,train
+ss-000419,"Bank of Baroda a/c XX47 se Rs.1,200.50 debit 12-Aug ko. Dispute ke liye official app use karo, koi link nahi.",hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000421,तुरंत लोन मंजूर। प्रोसेसिंग फीस http://192.0.2.10/login पर भेजें।,hi,scam,loan,synthetic_scamshield,loan_offer|payment_request|suspicious_url|urgency,train
+ss-000422,"PNB a/c XX90 se Rs.80.00 debit 28-Jul ko. Dispute ke liye official app use karo, koi link nahi.",hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000423,"WFH job mili hai 1500 roz, pehle 499 http://verify-kyc.example.in/update pe pay karo.",hinglish,scam,job,synthetic_scamshield,job_offer|payment_request|sensitive_info_request,train
+ss-000425,Court summons: settle fine online http://192.0.2.10/login to avoid arrest.,en,scam,other,synthetic_scamshield,urgency|suspicious_url|impersonation,train
+ss-000427,"Aapka ATM card block ho gaya hai, details update kare jaldi kare",hinglish,scam,bank_impersonation,hf_karanverma19,urgency|bank_impersonation,train
+ss-000428,Your loan EMI is paid. ICICI will not call to ask for a processing fee refund.,en,safe,safe,synthetic_scamshield,none,train
+ss-000429,SBI OTP [OTP] आहे. कोणाला सांगू नका.,mr,safe,safe,synthetic_scamshield,none,train
+ss-000431,SBI security: unusual login detected. Confirm PIN on http://verify-kyc.example.in/update within 10 minutes.,en,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000432,Library book Friday tak return karna.,hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000433,Urgent: complete Axis video KYC on http://verify-kyc.example.in/update to keep UPI active.,en,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000434,"ITR refund pending hai, PAN http://verify-kyc.example.in/update pe submit karo jaldi.",hinglish,scam,phishing,synthetic_scamshield,suspicious_url|urgency|sensitive_info_request,train
+ss-000435,HDFC अधिकृत संदेश: पिन शेअर करा आणि http://192.0.2.10/login उघडा.,mr,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000436,"Investment plan 40 percent return, jaldi http://verify-kyc.example.in/update pe join karo.",hinglish,scam,investment,synthetic_scamshield,investment_return|payment_request|urgency,train
+ss-000437,वीज जोडणी तोडली जाईल. बिल http://192.0.2.10/login वर भरा.,mr,scam,other,synthetic_scamshield,urgency|suspicious_url|impersonation,train
+ss-000438,Your SBI KYC is pending. Update now at http://192.0.2.10/login or your account will be frozen today.,en,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000439,लकी ड्रॉ विजेता। दावा करने के लिए OTP दें।,hi,scam,lottery,synthetic_scamshield,prize_lottery|payment_request|urgency,train
+ss-000440,"You are selected for instant loan approval, click to proceed immediately",en,scam,loan,hf_karanverma19,urgency|suspicious_url|loan,train
+ss-000442,"HDFC EMI kat gayi, koi action nahi chahiye.",hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000443,"Axis se call aayega mat sochna, ATM PIN bata dena. Pehle http://192.0.2.10/login pe verify karo.",hinglish,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000444,"ICICI: Rs.250.00 debited from a/c XX12 on 01-Sep at POS. If not you, use official ICICI app.",en,safe,safe,synthetic_scamshield,none,train
+ss-000445,आपको PhonePe पर ₹25000 मिले हैं। क्रेडिट के लिए UPI पिन http://192.0.2.10/login पर दर्ज करें।,hi,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000446,आपका Axis KYC समाप्त हो गया है। खाता बंद होने से पहले http://192.0.2.10/login पर अपडेट करें।,hi,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000450,"आपका बैंक खाता सत्यापन लंबित है, कृपया तुरंत अपडेट करें please act now",hi,scam,bank_impersonation,hf_karanverma19,urgency|bank_impersonation,train
+ss-000451,"ICICI se call aayega mat sochna, ATM PIN bata dena. Pehle http://192.0.2.10/login pe verify karo.",hinglish,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000452,Aapka ICICI account block ho raha hai. OTP share karo aur http://192.0.2.10/login kholo.,hinglish,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000453,तुरंत Axis केवाईसी पूरा करें वरना आपका खाता ब्लॉक हो जाएगा http://192.0.2.10/login,hi,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000454,"Train ticket confirm hai, IRCTC app me dekho.",hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000459,रिफंड मिळवण्यासाठी http://verify-kyc.example.in/update वर पेमेंट कन्फर्म करा.,mr,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000460,"Aapka ICICI KYC expire ho gaya hai, account block hone se pehle link open karo http://192.0.2.10/login.",hinglish,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000461,"Aapka Axis KYC expire ho gaya hai, account block hone se pehle link open karo http://verify-kyc.example.in/update.",hinglish,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000462,आपका HDFC KYC समाप्त हो गया है। खाता बंद होने से पहले http://verify-kyc.example.in/update पर अपडेट करें।,hi,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000463,तुम्ही निवडले. सुरक्षा ठेव UPI ने पाठवा.,mr,scam,job,synthetic_scamshield,job_offer|payment_request|sensitive_info_request,train
+ss-000464,ट्रेन समय पर है। प्लेटफॉर्म 3 पर मिलना।,hi,safe,safe,synthetic_scamshield,none,train
+ss-000465,आपका Axis कार्ड ब्लॉक है। अनब्लॉक करने हेतु http://192.0.2.10/login खोलें।,hi,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000466,SBI खाता संदिग्ध गतिविधि के कारण बंद होगा। http://verify-kyc.example.in/update पर OTP डालें।,hi,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000467,"आपका बैंक खाता सत्यापन लंबित है, कृपया तुरंत अपडेट करें abhi kare",en,scam,bank_impersonation,hf_karanverma19,urgency|bank_impersonation,train
+ss-000469,This is HDFC official. Your account will be closed. Call and share OTP now.,en,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000471,तुरंत Axis केवाईसी पूरा करें वरना आपका खाता ब्लॉक हो जाएगा http://verify-kyc.example.in/update,hi,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000473,Your Axis debit card is blocked. Share OTP and login at http://192.0.2.10/login to unblock.,en,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000474,Aapke account me 1 rupee pending hai Paytm. http://verify-kyc.example.in/update pe pay karke 25000 claim karo.,hinglish,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000475,"Instant loan approve ho gaya, processing fee http://192.0.2.10/login pe do.",hinglish,scam,loan,synthetic_scamshield,loan_offer|payment_request|suspicious_url|urgency,train
+ss-000477,"Netflix support: payment fail, OTP share karo http://verify-kyc.example.in/update",hinglish,scam,customer_care,synthetic_scamshield,customer_care|otp_request|bank_impersonation,train
+ss-000478,"Bijli 2 ghante me cut hogi, bill sirf http://verify-kyc.example.in/update pe bharo.",hinglish,scam,other,synthetic_scamshield,urgency|suspicious_url|impersonation,train
+ss-000479,वीज जोडणी तोडली जाईल. बिल http://verify-kyc.example.in/update वर भरा.,mr,scam,other,synthetic_scamshield,urgency|suspicious_url|impersonation,train
+ss-000480,Your HDFC debit card is blocked. Share OTP and login at http://192.0.2.10/login to unblock.,en,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000481,Courier: address incomplete. Pay extra freight on http://verify-kyc.example.in/update now.,en,scam,delivery,synthetic_scamshield,delivery_threat|payment_request|suspicious_url,train
+ss-000482,Bus pass renewed. Show this SMS to the conductor if asked.,en,safe,safe,synthetic_scamshield,none,train
+ss-000483,Aapke account me 1 rupee pending hai Paytm. http://192.0.2.10/login pe pay karke 25000 claim karo.,hinglish,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000484,Court summons: settle fine online http://verify-kyc.example.in/update to avoid arrest.,en,scam,other,synthetic_scamshield,urgency|suspicious_url|impersonation,train
+ss-000486,Parcel deliver ho gaya. Extra customs link pe mat bhugtan karna.,hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000491,HDFC केवाईसी पूरा है। लिंक पर क्लिक न करें और ओटीपी साझा न करें।,hi,safe,safe,synthetic_scamshield,none,train
+ss-000493,"Data entry job confirm, Aadhaar aur account number bhejo.",hinglish,scam,job,synthetic_scamshield,job_offer|payment_request|sensitive_info_request,train
+ss-000494,SBI आधिकारिक ऐप से ही बैंकिंग करें। कॉल पर पिन न बताएँ।,hi,safe,safe,synthetic_scamshield,none,train
+ss-000495,Axis KYC is already complete. We will never ask you to click a link or share OTP.,en,safe,safe,synthetic_scamshield,none,train
+ss-000499,Instagram: your account will be deleted. Login at http://192.0.2.10/login to verify.,en,scam,social_impersonation,synthetic_scamshield,social_impersonation|payment_request|urgency,train
+ss-000500,ICICI KYC is already complete. We will never ask you to click a link or share OTP.,en,safe,safe,synthetic_scamshield,none,train
+ss-000503,आपकी बस पास नवीनीकृत हो गई।,hi,safe,safe,synthetic_scamshield,none,train
+ss-000505,Meeting 4pm lab me hai.,hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000511,"Aapka parcel customs me atka hai, ₹35 pay karke release kare abhi kare",hinglish,scam,delivery,hf_karanverma19,delivery,train
+ss-000512,"SBI a/c XX90 se Rs.80.00 debit 28-Jul ko. Dispute ke liye official app use karo, koi link nahi.",hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000513,Your Axis debit card is blocked. Share OTP and login at http://verify-kyc.example.in/update to unblock.,en,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000514,ICICI आधिकारिक ऐप से ही बैंकिंग करें। कॉल पर पिन न बताएँ।,hi,safe,safe,synthetic_scamshield,none,train
+ss-000515,"UPI collect request approve karo http://192.0.2.10/login pe, warna paise kat jayenge.",hinglish,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000516,फ्लिपकार्ट केयर: ऑर्डर कैंसल। OTP बताइए।,hi,scam,customer_care,synthetic_scamshield,customer_care|otp_request|bank_impersonation,train
+ss-000517,तुमचे Axis KYC कालबाह्य झाले आहे. खाते ब्लॉक होण्यापूर्वी http://192.0.2.10/login उघडा.,mr,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000521,Your loan EMI is paid. Axis will not call to ask for a processing fee refund.,en,safe,safe,synthetic_scamshield,none,train
+ss-000522,PhonePe रिफंड अटका है। http://192.0.2.10/login पर पिन डालकर पाएं।,hi,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000523,"Dear customer, your Axis KYC has expired. Click http://verify-kyc.example.in/update immediately to prevent account blocking.",en,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000524,Your SBI debit card is blocked. Share OTP and login at http://verify-kyc.example.in/update to unblock.,en,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000526,"PNB: Rs.80.00 debited from a/c XX90 on 28-Jul at POS. If not you, use official PNB app.",en,safe,safe,synthetic_scamshield,none,train
+ss-000527,"Birthday dinner ghar pe hai, paise mat bhejna.",hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000530,"Package delivered. If a courier asks for extra customs pay by unknown link, refuse and use the shop app.",en,safe,safe,synthetic_scamshield,none,train
+ss-000531,ICICI केवाईसी पूरा है। लिंक पर क्लिक न करें और ओटीपी साझा न करें।,hi,safe,safe,synthetic_scamshield,none,train
+ss-000532,ICICI KYC pending hai. Jaldi http://192.0.2.10/login pe update karo warna account band ho jayega.,hinglish,scam,kyc,synthetic_scamshield,urgency|kyc_language|account_block_threat|suspicious_url,train
+ss-000533,SBI KYC पूर्ण आहे. लिंक उघडू नका. OTP देऊ नका.,mr,safe,safe,synthetic_scamshield,none,train
+ss-000534,"Paytm support: we are sending a request, approve it and read the OTP.",en,scam,customer_care,synthetic_scamshield,customer_care|otp_request|bank_impersonation,train
+ss-000537,HDFC security: unusual login detected. Confirm PIN on http://verify-kyc.example.in/update within 10 minutes.,en,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000538,Aapka HDFC account block ho raha hai. OTP share karo aur http://verify-kyc.example.in/update kholo.,hinglish,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000539,Income tax refund pending. Submit PAN on http://verify-kyc.example.in/update immediately.,en,scam,phishing,synthetic_scamshield,suspicious_url|urgency|sensitive_info_request,train
+ss-000540,"You are selected for instant loan approval, click to proceed please act now",hinglish,scam,loan,hf_karanverma19,suspicious_url|loan,train
+ss-000541,ईमेल लॉगिन http://192.0.2.10/login वर अपडेट करा नाहीतर बंद होईल.,mr,scam,phishing,synthetic_scamshield,suspicious_url|urgency|sensitive_info_request,train
+ss-000542,"You received Rs 50,000. Confirm UPI PIN on http://verify-kyc.example.in/update to credit your Google Pay wallet.",en,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000543,"Aapka parcel customs me atka hai, ₹35 pay karke release kare",hinglish,scam,delivery,hf_karanverma19,delivery,train
+ss-000544,Official HDFC app se hi login karo. Customer care OTP nahi mangta.,hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000545,क्रिप्टो ग्रुप: 24 तासात डबल. http://192.0.2.10/login वर पैसे टाका.,mr,scam,investment,synthetic_scamshield,investment_return|payment_request|urgency,train
+ss-000546,Your PhonePe payment of Rs 1 failed. Pay the remaining Rs 1 on http://192.0.2.10/login to receive a refund.,en,scam,upi_payment,synthetic_scamshield,payment_request|otp_request|suspicious_url|urgency,train
+ss-000547,आपका SBI कार्ड ब्लॉक है। अनब्लॉक करने हेतु http://verify-kyc.example.in/update खोलें।,hi,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train
+ss-000548,"आई, मी कॉलेजमध्ये पोहोचलो. संध्याकाळी फोन करतो.",mr,safe,safe,synthetic_scamshield,none,train
+ss-000549,"Loan EMI paid hai, processing fee ke naam pe paise mat bhejna.",hinglish,safe,safe,synthetic_scamshield,none,train
+ss-000550,"Aapka SBI ATM card block ho gaya hai, details update kare http://verify-kyc.example.in/update",hinglish,scam,bank_impersonation,synthetic_scamshield,bank_impersonation|otp_request|urgency|suspicious_url,train

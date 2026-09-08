@@ -1,0 +1,198 @@
+{
+  "rule_engine": {
+    "fp_examples": [
+      {
+        "id": "ss-000091",
+        "label": "safe",
+        "predicted": "scam",
+        "language": "en",
+        "scam_type": "safe",
+        "excerpt": "SBI: UPI is active. Do not share UPI PIN with anyone, including people claiming to be staff.",
+        "truncated": false
+      },
+      {
+        "id": "ss-000276",
+        "label": "safe",
+        "predicted": "scam",
+        "language": "en",
+        "scam_type": "safe",
+        "excerpt": "Your loan EMI is paid. SBI will not call to ask for a processing fee refund.",
+        "truncated": false
+      }
+    ],
+    "fn_examples": [
+      {
+        "id": "ss-000020",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "hi",
+        "scam_type": "bank_impersonation",
+        "excerpt": "आपका बैंक खाता सत्यापन लंबित है, कृपया तुरंत अपडेट करें immediately",
+        "truncated": false
+      },
+      {
+        "id": "ss-000027",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "mr",
+        "scam_type": "delivery",
+        "excerpt": "पार्सल कस्टम्स मध्ये अडकले. ₹35 [URL] वर भरा.",
+        "truncated": false
+      },
+      {
+        "id": "ss-000052",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "en",
+        "scam_type": "upi_payment",
+        "excerpt": "Your Paytm payment of Rs 1 failed. Pay the remaining Rs 1 on [URL] to receive a refund.",
+        "truncated": false
+      },
+      {
+        "id": "ss-000057",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "hi",
+        "scam_type": "delivery",
+        "excerpt": "पार्सल कस्टम में अटका है। ₹35 [URL] पर दें।",
+        "truncated": false
+      },
+      {
+        "id": "ss-000060",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "hinglish",
+        "scam_type": "bank_impersonation",
+        "excerpt": "Aapka ATM card block ho gaya hai, details update kare abhi kare",
+        "truncated": false
+      },
+      {
+        "id": "ss-000094",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "mr",
+        "scam_type": "investment",
+        "excerpt": "क्रिप्टो ग्रुप: 24 तासात डबल. [URL] वर पैसे टाका.",
+        "truncated": false
+      },
+      {
+        "id": "ss-000099",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "hinglish",
+        "scam_type": "upi_payment",
+        "excerpt": "Aapke account me 1 rupee pending hai Google Pay. [URL] pe pay karke 25000 claim karo.",
+        "truncated": false
+      },
+      {
+        "id": "ss-000173",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "mr",
+        "scam_type": "job",
+        "excerpt": "घरून जॉब: दिवसाला ₹1800. फी [URL] वर भरा.",
+        "truncated": false
+      }
+    ],
+    "fp_count": 2,
+    "fn_count": 22
+  },
+  "combined": {
+    "fp_examples": [
+      {
+        "id": "ss-000091",
+        "label": "safe",
+        "predicted": "scam",
+        "language": "en",
+        "scam_type": "safe",
+        "excerpt": "SBI: UPI is active. Do not share UPI PIN with anyone, including people claiming to be staff.",
+        "truncated": false
+      },
+      {
+        "id": "ss-000276",
+        "label": "safe",
+        "predicted": "scam",
+        "language": "en",
+        "scam_type": "safe",
+        "excerpt": "Your loan EMI is paid. SBI will not call to ask for a processing fee refund.",
+        "truncated": false
+      }
+    ],
+    "fn_examples": [
+      {
+        "id": "ss-000020",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "hi",
+        "scam_type": "bank_impersonation",
+        "excerpt": "आपका बैंक खाता सत्यापन लंबित है, कृपया तुरंत अपडेट करें immediately",
+        "truncated": false
+      },
+      {
+        "id": "ss-000027",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "mr",
+        "scam_type": "delivery",
+        "excerpt": "पार्सल कस्टम्स मध्ये अडकले. ₹35 [URL] वर भरा.",
+        "truncated": false
+      },
+      {
+        "id": "ss-000052",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "en",
+        "scam_type": "upi_payment",
+        "excerpt": "Your Paytm payment of Rs 1 failed. Pay the remaining Rs 1 on [URL] to receive a refund.",
+        "truncated": false
+      },
+      {
+        "id": "ss-000057",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "hi",
+        "scam_type": "delivery",
+        "excerpt": "पार्सल कस्टम में अटका है। ₹35 [URL] पर दें।",
+        "truncated": false
+      },
+      {
+        "id": "ss-000060",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "hinglish",
+        "scam_type": "bank_impersonation",
+        "excerpt": "Aapka ATM card block ho gaya hai, details update kare abhi kare",
+        "truncated": false
+      },
+      {
+        "id": "ss-000094",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "mr",
+        "scam_type": "investment",
+        "excerpt": "क्रिप्टो ग्रुप: 24 तासात डबल. [URL] वर पैसे टाका.",
+        "truncated": false
+      },
+      {
+        "id": "ss-000099",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "hinglish",
+        "scam_type": "upi_payment",
+        "excerpt": "Aapke account me 1 rupee pending hai Google Pay. [URL] pe pay karke 25000 claim karo.",
+        "truncated": false
+      },
+      {
+        "id": "ss-000173",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "mr",
+        "scam_type": "job",
+        "excerpt": "घरून जॉब: दिवसाला ₹1800. फी [URL] वर भरा.",
+        "truncated": false
+      }
+    ],
+    "fp_count": 2,
+    "fn_count": 22
+  }
+}

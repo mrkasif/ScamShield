@@ -1,0 +1,12 @@
+# Render Blueprint for the ScamShield Flask web service.
+# If you prefer point-and-click: create a "Web Service", connect this repo,
+# build = `pip install -r requirements.txt`, start = `gunicorn web.app:app`.
+# Render injects the PORT variable automatically (handled by gunicorn.conf.py).
+services:
+  - type: web
+    name: scamshield
+    runtime: python
+    plan: free
+    healthCheckPath: /api/health
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn web.app:app

@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+.python-version
+
+# Tests / tooling
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Models and local artifacts:
+# - raw training checkpoints / alternates are ignored…
+models/*.pkl
+models/*.pt
+!models/.gitkeep
+# - the deployed inference model IS committed (needed on Render/production,
+#   see src/scamshield/ml/predict.py) so it must NOT be ignored:
+!models/scamshield_tfidf.joblib
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Data dumps (keep schema samples; ignore large raw pulls)
+data/raw/*.zip
+data/raw/*.tar.gz
+*.csv.bak

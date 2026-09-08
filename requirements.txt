@@ -1,0 +1,15 @@
+# ScamShield — free/open-source only. No paid APIs.
+numpy>=1.24.0                # used directly by scripts/generate_qr_fixtures.py + tests/test_qr_engine.py
+scikit-learn>=1.3.0
+joblib>=1.3.0
+
+# App (final frontend)
+flask>=3.0.0
+gunicorn>=21.0.0           # production WSGI server (Render: gunicorn web.app:app)
+
+# Legacy Streamlit prototype (kept in the repo; NOT the final frontend)
+streamlit>=1.32.0
+
+# QR decode & analysis (Step 8)
+opencv-python-headless>=4.8.0   # local QR decoding backend (cv2.QRCodeDetector)
+qrcode>=7.3.0                   # QR image generation for tests/demo fixtures only

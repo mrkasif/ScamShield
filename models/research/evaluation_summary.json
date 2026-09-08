@@ -1,0 +1,871 @@
+{
+  "timestamp": "2026-09-08T13:06:48.906620+00:00",
+  "reproducibility": {
+    "random_seed": "N/A (deterministic, no stochastic process)",
+    "test_split": "data/test/messages.csv (frozen, deduped: 106 samples)",
+    "dataset_root": "data",
+    "note": "All evaluation is deterministic and run on the labelled dataset. No random processes, no stochastic training, no external network calls. Same inputs produce same outputs."
+  },
+  "dataset_profile": {
+    "raw_counts": {
+      "train": 356,
+      "validation": 88,
+      "test": 110,
+      "total": 554
+    },
+    "deduped_counts": {
+      "train": 285,
+      "validation": 83,
+      "test": 106,
+      "total": 474
+    },
+    "train": {
+      "n": 285,
+      "distribution": {
+        "safe": 105,
+        "scam": 180
+      },
+      "categories": {
+        "safe": 105,
+        "delivery": 13,
+        "phishing": 8,
+        "investment": 6,
+        "kyc": 41,
+        "bank_impersonation": 43,
+        "customer_care": 11,
+        "other": 8,
+        "social_impersonation": 5,
+        "loan": 11,
+        "upi_payment": 22,
+        "lottery": 6,
+        "job": 6
+      },
+      "languages": {
+        "en": 91,
+        "hinglish": 85,
+        "hi": 63,
+        "mr": 46
+      },
+      "sources": {
+        "synthetic_scamshield": 265,
+        "hf_karanverma19": 20
+      }
+    },
+    "validation": {
+      "n": 83,
+      "distribution": {
+        "scam": 61,
+        "safe": 22
+      },
+      "categories": {
+        "other": 4,
+        "customer_care": 4,
+        "upi_payment": 4,
+        "safe": 22,
+        "lottery": 4,
+        "kyc": 10,
+        "bank_impersonation": 11,
+        "job": 4,
+        "delivery": 4,
+        "phishing": 4,
+        "social_impersonation": 4,
+        "investment": 4,
+        "loan": 4
+      },
+      "languages": {
+        "hinglish": 21,
+        "mr": 17,
+        "hi": 20,
+        "en": 25
+      },
+      "sources": {
+        "synthetic_scamshield": 74,
+        "hf_karanverma19": 9
+      }
+    },
+    "test": {
+      "n": 106,
+      "distribution": {
+        "scam": 80,
+        "safe": 26
+      },
+      "categories": {
+        "delivery": 6,
+        "loan": 5,
+        "kyc": 15,
+        "safe": 26,
+        "bank_impersonation": 15,
+        "upi_payment": 11,
+        "investment": 4,
+        "job": 4,
+        "lottery": 4,
+        "customer_care": 4,
+        "other": 4,
+        "social_impersonation": 4,
+        "phishing": 4
+      },
+      "languages": {
+        "hinglish": 29,
+        "hi": 24,
+        "en": 32,
+        "mr": 21
+      },
+      "sources": {
+        "synthetic_scamshield": 94,
+        "hf_karanverma19": 12
+      }
+    }
+  },
+  "leakage": {
+    "exact_overlap": {
+      "train-validation": [
+        "आपका KYC पूरा नहीं है, तुरंत अपडेट करें",
+        "आपका KYC पूरा नहीं है, तुरंत अपडेट करें abhi kare"
+      ],
+      "train-test": [
+        "Aapka ATM card block ho gaya hai, details update kare abhi kare",
+        "Aapka parcel customs me atka hai, ₹35 pay karke release kare please act now",
+        "Your parcel has been delivered successfully",
+        "Your payment of ₹899 has been received",
+        "Your train ticket has been booked successfully",
+        "आपका KYC पूरा नहीं है, तुरंत अपडेट करें immediately",
+        "आपका बैंक खाता सत्यापन लंबित है, कृपया तुरंत अपडेट करें immediately"
+      ],
+      "validation-test": [
+        "Aapka ATM card block ho gaya hai, details update kare immediately",
+        "Aapka parcel customs me atka hai, ₹35 pay karke release kare immediately",
+        "You are selected for instant loan approval, click to proceed"
+      ]
+    },
+    "normalised_overlap": {
+      "train-validation": [
+        "24 घंटे में पैसा डबल। <URL> पर निवेश करें।",
+        "axis security: unusual login detected. confirm pin on <URL> within 10 minutes.",
+        "axis अधिकृत संदेश: पिन शेअर करा आणि <URL> उघडा.",
+        "axis खाता संदिग्ध गतिविधि के कारण बंद होगा। <URL> पर otp डालें।",
+        "courier wala kehta hai extra charge <URL> pe do warna return.",
+        "dear customer, your axis kyc has expired. click <URL> immediately to prevent account blocking.",
+        "dear customer, your icici kyc has expired. click <URL> immediately to prevent account blocking.",
+        "hdfc kyc pending hai. jaldi <URL> pe update karo warna account band ho jayega.",
+        "icici se call aayega mat sochna, atm pin bata dena. pehle <URL> pe verify karo.",
+        "icici अधिकृत संदेश: पिन शेअर करा आणि <URL> उघडा.",
+        "instagram account delete ho raha hai, <URL> pe login karke save karo.",
+        "iphone free mila hai, rs 99 <URL> pe delivery fee do.",
+        "paytm रिफंड अटका है। <URL> पर पिन डालकर पाएं।",
+        "sbi se call aayega mat sochna, atm pin bata dena. pehle <URL> pe verify karo.",
+        "sbi व्हिडिओ केवायसी <URL> वर पूर्ण करा, नाहीतर यूपीआय बंद होईल.",
+        "sim block ho jayegi trai ke hisaab se, <URL> pe kyc karo.",
+        "you are pre-approved for an instant loan. click <URL> and pay processing fee.",
+        "you won a kbc prize of rs 25 lakh. pay processing tax at <URL>",
+        "your sim will be blocked under new trai rules. recharge kyc at <URL>",
+        "आपका icici kyc समाप्त हो गया है। खाता बंद होने से पहले <URL> पर अपडेट करें।",
+        "आपका kyc पूरा नहीं है, तुरंत अपडेट करें",
+        "आपका kyc पूरा नहीं है, तुरंत अपडेट करें abhi kare",
+        "आपका sbi कार्ड ब्लॉक है। अनब्लॉक करने हेतु <URL> खोलें।",
+        "आयकर रिफंड <URL> पर क्लेम करें, तुरंत pan डालें।",
+        "इन्स्टाग्राम अकाउंट बंद होगा। <URL> पर लॉगिन करो।",
+        "ईमेल लॉगिन <URL> वर अपडेट करा नाहीतर बंद होईल.",
+        "तुमचे sbi kyc कालबाह्य झाले आहे. खाते ब्लॉक होण्यापूर्वी <URL> उघडा.",
+        "तुरंत icici केवाईसी पूरा करें वरना आपका खाता ब्लॉक हो जाएगा <URL>",
+        "पत्ता अपुरा. अतिरिक्त भाडे <URL> वर द्या.",
+        "बिना कागज़ लोन। पहले gst <URL> पर चुकाएँ।"
+      ],
+      "train-test": [
+        "aapka atm card block ho gaya hai, details update kare abhi kare",
+        "aapka axis account block ho raha hai. otp share karo aur <URL> kholo.",
+        "aapka axis kyc expire ho gaya hai, account block hone se pehle link open karo <URL>",
+        "aapka hdfc kyc expire ho gaya hai, account block hone se pehle link open karo <URL>",
+        "aapka parcel customs me atka hai, rs 35 pay karke release kare <URL>",
+        "aapka parcel customs me atka hai, ₹35 pay karke release kare please act now",
+        "aapka sbi atm card block ho gaya hai, details update kare <URL>",
+        "aapke account me 1 rupee pending hai google pay. <URL> pe pay karke 25000 claim karo.",
+        "aapke account me 1 rupee pending hai phonepe. <URL> pe pay karke 25000 claim karo.",
+        "axis व्हिडिओ केवायसी <URL> वर पूर्ण करा, नाहीतर यूपीआय बंद होईल.",
+        "bijli 2 ghante me cut hogi, bill sirf <URL> pe bharo.",
+        "collect cashback on google pay: enter upi pin at <URL> now.",
+        "collect cashback on phonepe: enter upi pin at <URL> now.",
+        "dear customer, your hdfc kyc has expired. click <URL> immediately to prevent account blocking.",
+        "dear customer, your sbi kyc has expired. click <URL> immediately to prevent account blocking.",
+        "electricity will be cut in 2 hours. pay pending bill only on <URL>",
+        "google pay रिफंड अटका है। <URL> पर पिन डालकर पाएं।",
+        "google pay वर पैसे अडकले आहेत. upi पिन <URL> वर टाका.",
+        "hdfc खाता संदिग्ध गतिविधि के कारण बंद होगा। <URL> पर otp डालें।",
+        "hdfc खाते ब्लॉक होणार आहे. otp <URL> वर द्या.",
+        "icici kyc pending hai. jaldi <URL> pe update karo warna account band ho jayega.",
+        "icici खाता संदिग्ध गतिविधि के कारण बंद होगा। <URL> पर otp डालें।",
+        "netflix support: payment fail, otp share karo <URL>",
+        "no documents loan disbursed today. first pay gst on <URL>",
+        "paytm se refund aaya hai, upi pin <URL> pe daalo warna cancel ho jayega.",
+        "sbi kyc pending hai. jaldi <URL> pe update karo warna account band ho jayega.",
+        "sbi अधिकृत संदेश: पिन शेअर करा आणि <URL> उघडा.",
+        "sbi खाते ब्लॉक होणार आहे. otp <URL> वर द्या.",
+        "urgent: complete axis video kyc on <URL> to keep upi active.",
+        "urgent: complete icici video kyc on <URL> to keep upi active.",
+        "wfh job mili hai 1500 roz, pehle 499 <URL> pe pay karo.",
+        "work from home: rs 1500/day. pay rs 499 registration at <URL>",
+        "your hdfc debit card is blocked. share otp and login at <URL> to unblock.",
+        "your parcel has been delivered successfully",
+        "your parcel is stuck in customs. pay rs 35 at <URL> to release.",
+        "your payment of ₹899 has been received",
+        "your sbi kyc is pending. update now at <URL> or your account will be frozen today.",
+        "your train ticket has been booked successfully",
+        "आपका kyc पूरा नहीं है, तुरंत अपडेट करें immediately",
+        "आपका sbi kyc समाप्त हो गया है। खाता बंद होने से पहले <URL> पर अपडेट करें।",
+        "आपका ईमेल हैंग हो गया है। <URL> पर पासवर्ड रीसेट करें।",
+        "आपका बैंक खाता सत्यापन लंबित है, कृपया तुरंत अपडेट करें immediately",
+        "आपको google pay पर ₹25000 मिले हैं। क्रेडिट के लिए upi पिन <URL> पर दर्ज करें।",
+        "आपको paytm पर ₹25000 मिले हैं। क्रेडिट के लिए upi पिन <URL> पर दर्ज करें।",
+        "क्रिप्टो ग्रुप: 24 तासात डबल. <URL> वर पैसे टाका.",
+        "झटपट कर्ज मंजूर. फी <URL> वर भरा.",
+        "तुमचे axis kyc कालबाह्य झाले आहे. खाते ब्लॉक होण्यापूर्वी <URL> उघडा.",
+        "तुमचे hdfc kyc कालबाह्य झाले आहे. खाते ब्लॉक होण्यापूर्वी <URL> उघडा.",
+        "तुमचे आधार निलंबित. <URL> वर पुन्हा पडताळणी करा.",
+        "तुरंत sbi केवाईसी पूरा करें वरना आपका खाता ब्लॉक हो जाएगा <URL>",
+        "तुरंत लोन मंजूर। प्रोसेसिंग फीस <URL> पर भेजें।",
+        "पार्सल कस्टम में अटका है। ₹35 <URL> पर दें।",
+        "पार्सल कस्टम्स मध्ये अडकले. ₹35 <URL> वर भरा."
+      ],
+      "validation-test": [
+        "aadhaar lock ho gaya hai, <URL> pe verify karo warna subsidy ruk jayegi.",
+        "aapka atm card block ho gaya hai, details update kare immediately",
+        "aapka parcel customs me atka hai, ₹35 pay karke release kare immediately",
+        "crypto me 24 ghante me double, <URL> pe deposit karo.",
+        "double your money in 24 hours with our crypto trading group. deposit on <URL>",
+        "icici security: unusual login detected. confirm pin on <URL> within 10 minutes.",
+        "paytm वर पैसे अडकले आहेत. upi पिन <URL> वर टाका.",
+        "reset your email password here <URL> or access will be lost today.",
+        "you are selected for instant loan approval, click to proceed",
+        "आपने केबीसी में ₹25 लाख जीते। टैक्स <URL> पर भरें।",
+        "इंस्टा अकाउंट डिलीट होईल. <URL> वर लॉगिन कर.",
+        "कोर्टाची नोटीस. दंड <URL> वर भरा.",
+        "घर बैठे नौकरी, रोज़ ₹2000। रजिस्ट्रेशन फीस <URL> पर भेजें।",
+        "घरून जॉब: दिवसाला ₹1800. फी <URL> वर भरा.",
+        "तुम्ही लॉटरी जिंकली. टॅक्स <URL> वर भरा.",
+        "सिम ब्लॉक होगी। <URL> पर केवाईसी करें।"
+      ]
+    },
+    "in_all_three_exact": [],
+    "in_all_three_normalised": [],
+    "totals": {
+      "exact": 12,
+      "normalised": 99
+    },
+    "overlap_type": "normalised",
+    "affected_split_pairs": [
+      "train-validation",
+      "train-test",
+      "validation-test"
+    ],
+    "recommendation": "99 normalised text(s) appear in more than one split. To obtain a leakage-clean evaluation, exclude test rows whose normalised text appears in train or validation before computing held-out metrics. The original dataset files must not be modified; the leakage is detected and reported, and a leakage-clean evaluation subset can be derived at runtime."
+  },
+  "rule_engine": {
+    "system": "rule",
+    "positive_prediction": "scam",
+    "negative_prediction": "safe",
+    "prediction_documentation": "positive='scam' when the deterministic rule engine fires: nlp.analyze_message(text)['is_scam'] == True.",
+    "n_samples": 106,
+    "accuracy": 0.7736,
+    "precision": 0.9667,
+    "recall": 0.725,
+    "f1": 0.8286,
+    "confusion_matrix": {
+      "true_positive": 58,
+      "false_negative": 22,
+      "false_positive": 2,
+      "true_negative": 24
+    },
+    "class_distribution": {
+      "scam": 80,
+      "safe": 26
+    },
+    "imbalanced": true,
+    "fp_count": 2,
+    "fn_count": 22,
+    "tp_count": 58,
+    "tn_count": 24,
+    "fp_examples": [
+      {
+        "id": "ss-000091",
+        "label": "safe",
+        "predicted": "scam",
+        "language": "en",
+        "scam_type": "safe",
+        "excerpt": "SBI: UPI is active. Do not share UPI PIN with anyone, including people claiming to be staff.",
+        "truncated": false
+      },
+      {
+        "id": "ss-000276",
+        "label": "safe",
+        "predicted": "scam",
+        "language": "en",
+        "scam_type": "safe",
+        "excerpt": "Your loan EMI is paid. SBI will not call to ask for a processing fee refund.",
+        "truncated": false
+      }
+    ],
+    "fn_examples": [
+      {
+        "id": "ss-000020",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "hi",
+        "scam_type": "bank_impersonation",
+        "excerpt": "आपका बैंक खाता सत्यापन लंबित है, कृपया तुरंत अपडेट करें immediately",
+        "truncated": false
+      },
+      {
+        "id": "ss-000027",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "mr",
+        "scam_type": "delivery",
+        "excerpt": "पार्सल कस्टम्स मध्ये अडकले. ₹35 [URL] वर भरा.",
+        "truncated": false
+      },
+      {
+        "id": "ss-000052",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "en",
+        "scam_type": "upi_payment",
+        "excerpt": "Your Paytm payment of Rs 1 failed. Pay the remaining Rs 1 on [URL] to receive a refund.",
+        "truncated": false
+      },
+      {
+        "id": "ss-000057",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "hi",
+        "scam_type": "delivery",
+        "excerpt": "पार्सल कस्टम में अटका है। ₹35 [URL] पर दें।",
+        "truncated": false
+      },
+      {
+        "id": "ss-000060",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "hinglish",
+        "scam_type": "bank_impersonation",
+        "excerpt": "Aapka ATM card block ho gaya hai, details update kare abhi kare",
+        "truncated": false
+      },
+      {
+        "id": "ss-000094",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "mr",
+        "scam_type": "investment",
+        "excerpt": "क्रिप्टो ग्रुप: 24 तासात डबल. [URL] वर पैसे टाका.",
+        "truncated": false
+      },
+      {
+        "id": "ss-000099",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "hinglish",
+        "scam_type": "upi_payment",
+        "excerpt": "Aapke account me 1 rupee pending hai Google Pay. [URL] pe pay karke 25000 claim karo.",
+        "truncated": false
+      },
+      {
+        "id": "ss-000173",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "mr",
+        "scam_type": "job",
+        "excerpt": "घरून जॉब: दिवसाला ₹1800. फी [URL] वर भरा.",
+        "truncated": false
+      }
+    ],
+    "note_about_errors": "False negatives = scam predicted as safe (missed threats - the higher-risk error for users). False positives = safe predicted as scam (harms trust / causes friction)."
+  },
+  "ml": {
+    "system": "ml",
+    "positive_prediction": "scam",
+    "negative_prediction": "safe",
+    "prediction_documentation": "positive='scam' when the trained TF-IDF + Logistic Regression model predicts scam: ml.predict_message(text)['prediction'] == 'scam' (model_available must be True).",
+    "n_samples": 106,
+    "accuracy": 0.9906,
+    "precision": 1.0,
+    "recall": 0.9875,
+    "f1": 0.9937,
+    "confusion_matrix": {
+      "true_positive": 79,
+      "false_negative": 1,
+      "false_positive": 0,
+      "true_negative": 26
+    },
+    "class_distribution": {
+      "scam": 80,
+      "safe": 26
+    },
+    "imbalanced": true,
+    "fp_count": 0,
+    "fn_count": 1,
+    "tp_count": 79,
+    "tn_count": 26,
+    "fp_examples": [],
+    "fn_examples": [
+      {
+        "id": "ss-000274",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "hi",
+        "scam_type": "social_impersonation",
+        "excerpt": "मैं तुम्हारा भाई हूँ, फोन खो गया। इस UPI पर ₹3000 भेजो।",
+        "truncated": false
+      }
+    ],
+    "note_about_errors": "False negatives = scam predicted as safe (missed threats - the higher-risk error for users). False positives = safe predicted as scam (harms trust / causes friction)."
+  },
+  "combined": {
+    "system": "combined",
+    "positive_prediction": "scam",
+    "negative_prediction": "safe",
+    "prediction_documentation": "positive='scam' when the unified analyzer classifies the message as suspicious: scamshield.analyze('message', text)['is_suspicious'] == True. On message inputs, the top-level verdict is driven by the deterministic rule engine; ML is attached under engine_results but does not alter the top-level is_suspicious. The combined result therefore matches the rule engine on the message benchmark by design.",
+    "n_samples": 106,
+    "accuracy": 0.7736,
+    "precision": 0.9667,
+    "recall": 0.725,
+    "f1": 0.8286,
+    "confusion_matrix": {
+      "true_positive": 58,
+      "false_negative": 22,
+      "false_positive": 2,
+      "true_negative": 24
+    },
+    "class_distribution": {
+      "scam": 80,
+      "safe": 26
+    },
+    "imbalanced": true,
+    "fp_count": 2,
+    "fn_count": 22,
+    "tp_count": 58,
+    "tn_count": 24,
+    "fp_examples": [
+      {
+        "id": "ss-000091",
+        "label": "safe",
+        "predicted": "scam",
+        "language": "en",
+        "scam_type": "safe",
+        "excerpt": "SBI: UPI is active. Do not share UPI PIN with anyone, including people claiming to be staff.",
+        "truncated": false
+      },
+      {
+        "id": "ss-000276",
+        "label": "safe",
+        "predicted": "scam",
+        "language": "en",
+        "scam_type": "safe",
+        "excerpt": "Your loan EMI is paid. SBI will not call to ask for a processing fee refund.",
+        "truncated": false
+      }
+    ],
+    "fn_examples": [
+      {
+        "id": "ss-000020",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "hi",
+        "scam_type": "bank_impersonation",
+        "excerpt": "आपका बैंक खाता सत्यापन लंबित है, कृपया तुरंत अपडेट करें immediately",
+        "truncated": false
+      },
+      {
+        "id": "ss-000027",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "mr",
+        "scam_type": "delivery",
+        "excerpt": "पार्सल कस्टम्स मध्ये अडकले. ₹35 [URL] वर भरा.",
+        "truncated": false
+      },
+      {
+        "id": "ss-000052",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "en",
+        "scam_type": "upi_payment",
+        "excerpt": "Your Paytm payment of Rs 1 failed. Pay the remaining Rs 1 on [URL] to receive a refund.",
+        "truncated": false
+      },
+      {
+        "id": "ss-000057",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "hi",
+        "scam_type": "delivery",
+        "excerpt": "पार्सल कस्टम में अटका है। ₹35 [URL] पर दें।",
+        "truncated": false
+      },
+      {
+        "id": "ss-000060",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "hinglish",
+        "scam_type": "bank_impersonation",
+        "excerpt": "Aapka ATM card block ho gaya hai, details update kare abhi kare",
+        "truncated": false
+      },
+      {
+        "id": "ss-000094",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "mr",
+        "scam_type": "investment",
+        "excerpt": "क्रिप्टो ग्रुप: 24 तासात डबल. [URL] वर पैसे टाका.",
+        "truncated": false
+      },
+      {
+        "id": "ss-000099",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "hinglish",
+        "scam_type": "upi_payment",
+        "excerpt": "Aapke account me 1 rupee pending hai Google Pay. [URL] pe pay karke 25000 claim karo.",
+        "truncated": false
+      },
+      {
+        "id": "ss-000173",
+        "label": "scam",
+        "predicted": "safe",
+        "language": "mr",
+        "scam_type": "job",
+        "excerpt": "घरून जॉब: दिवसाला ₹1800. फी [URL] वर भरा.",
+        "truncated": false
+      }
+    ],
+    "note_about_errors": "False negatives = scam predicted as safe (missed threats - the higher-risk error for users). False positives = safe predicted as scam (harms trust / causes friction)."
+  },
+  "comparison": [
+    {
+      "system": "Rule Engine",
+      "accuracy": 0.7736,
+      "precision": 0.9667,
+      "recall": 0.725,
+      "f1": 0.8286,
+      "n_samples": 106,
+      "note": "False negatives = scam predicted as safe (missed threats - the higher-risk error for users). False positives = safe predicted as scam (harms trust / causes friction)."
+    },
+    {
+      "system": "Local ML",
+      "accuracy": 0.9906,
+      "precision": 1.0,
+      "recall": 0.9875,
+      "f1": 0.9937,
+      "n_samples": 106,
+      "note": "False negatives = scam predicted as safe (missed threats - the higher-risk error for users). False positives = safe predicted as scam (harms trust / causes friction)."
+    },
+    {
+      "system": "Combined ScamShield",
+      "accuracy": 0.7736,
+      "precision": 0.9667,
+      "recall": 0.725,
+      "f1": 0.8286,
+      "n_samples": 106,
+      "note": "False negatives = scam predicted as safe (missed threats - the higher-risk error for users). False positives = safe predicted as scam (harms trust / causes friction)."
+    }
+  ],
+  "leakage_clean_combined": {
+    "system": "combined",
+    "positive_prediction": "scam",
+    "negative_prediction": "safe",
+    "prediction_documentation": "positive='scam' when the unified analyzer classifies the message as suspicious: scamshield.analyze('message', text)['is_suspicious'] == True. On message inputs, the top-level verdict is driven by the deterministic rule engine; ML is attached under engine_results but does not alter the top-level is_suspicious. The combined result therefore matches the rule engine on the message benchmark by design.",
+    "n_samples": 37,
+    "accuracy": 0.8919,
+    "precision": 0.8571,
+    "recall": 0.8571,
+    "f1": 0.8571,
+    "confusion_matrix": {
+      "true_positive": 12,
+      "false_negative": 2,
+      "false_positive": 2,
+      "true_negative": 21
+    },
+    "class_distribution": {
+      "scam": 14,
+      "safe": 23
+    },
+    "imbalanced": true,
+    "fp_count": 2,
+    "fn_count": 2,
+    "tp_count": 12,
+    "tn_count": 21,
+    "fp_examples": [],
+    "fn_examples": [],
+    "note_about_errors": "False negatives = scam predicted as safe (missed threats - the higher-risk error for users). False positives = safe predicted as scam (harms trust / causes friction).",
+    "n_original_test": 106,
+    "n_leakage_clean": 37,
+    "n_excluded": 69,
+    "note": "Leakage-clean subset: 37 of 106 test samples retained (69 excluded because their normalised text appeared in train or validation)."
+  },
+  "language_results": {
+    "available": true,
+    "languages": {
+      "en": {
+        "n": 32,
+        "distribution": {
+          "scam": 23,
+          "safe": 9
+        },
+        "metrics": {
+          "positive_class": "scam",
+          "negative_class": "safe",
+          "n_samples": 32,
+          "confusion_matrix": {
+            "true_positive": 19,
+            "false_negative": 4,
+            "false_positive": 2,
+            "true_negative": 7
+          },
+          "accuracy": 0.8125,
+          "precision": 0.9048,
+          "recall": 0.8261,
+          "f1": 0.8636,
+          "class_distribution": {
+            "scam": 23,
+            "safe": 9
+          },
+          "imbalanced": true,
+          "note_about_errors": "False negatives = scam predicted as safe (missed threats - the higher-risk error for users). False positives = safe predicted as scam (harms trust / causes friction)."
+        }
+      },
+      "hi": {
+        "n": 24,
+        "distribution": {
+          "scam": 19,
+          "safe": 5
+        },
+        "metrics": {
+          "positive_class": "scam",
+          "negative_class": "safe",
+          "n_samples": 24,
+          "confusion_matrix": {
+            "true_positive": 13,
+            "false_negative": 6,
+            "false_positive": 0,
+            "true_negative": 5
+          },
+          "accuracy": 0.75,
+          "precision": 1.0,
+          "recall": 0.6842,
+          "f1": 0.8125,
+          "class_distribution": {
+            "scam": 19,
+            "safe": 5
+          },
+          "imbalanced": true,
+          "note_about_errors": "False negatives = scam predicted as safe (missed threats - the higher-risk error for users). False positives = safe predicted as scam (harms trust / causes friction)."
+        }
+      },
+      "hinglish": {
+        "n": 29,
+        "distribution": {
+          "scam": 21,
+          "safe": 8
+        },
+        "metrics": {
+          "positive_class": "scam",
+          "negative_class": "safe",
+          "n_samples": 29,
+          "confusion_matrix": {
+            "true_positive": 16,
+            "false_negative": 5,
+            "false_positive": 0,
+            "true_negative": 8
+          },
+          "accuracy": 0.8276,
+          "precision": 1.0,
+          "recall": 0.7619,
+          "f1": 0.8649,
+          "class_distribution": {
+            "scam": 21,
+            "safe": 8
+          },
+          "imbalanced": true,
+          "note_about_errors": "False negatives = scam predicted as safe (missed threats - the higher-risk error for users). False positives = safe predicted as scam (harms trust / causes friction)."
+        }
+      },
+      "mr": {
+        "n": 21,
+        "distribution": {
+          "scam": 17,
+          "safe": 4
+        },
+        "metrics": {
+          "positive_class": "scam",
+          "negative_class": "safe",
+          "n_samples": 21,
+          "confusion_matrix": {
+            "true_positive": 10,
+            "false_negative": 7,
+            "false_positive": 0,
+            "true_negative": 4
+          },
+          "accuracy": 0.6667,
+          "precision": 1.0,
+          "recall": 0.5882,
+          "f1": 0.7407,
+          "class_distribution": {
+            "scam": 17,
+            "safe": 4
+          },
+          "imbalanced": true,
+          "note_about_errors": "False negatives = scam predicted as safe (missed threats - the higher-risk error for users). False positives = safe predicted as scam (harms trust / causes friction)."
+        }
+      }
+    },
+    "note": "All language groups meet the minimum sample threshold."
+  },
+  "category_results": {
+    "available": true,
+    "categories": {
+      "bank_impersonation": {
+        "n": 15,
+        "confusion": {
+          "tp": 11,
+          "fp": 49,
+          "tn": 42,
+          "fn": 4
+        },
+        "accuracy": 0.5,
+        "precision": 0.1833,
+        "recall": 0.7333,
+        "f1": 0.2933
+      },
+      "delivery": {
+        "n": 6,
+        "confusion": {
+          "tp": 4,
+          "fp": 56,
+          "tn": 44,
+          "fn": 2
+        },
+        "accuracy": 0.4528,
+        "precision": 0.0667,
+        "recall": 0.6667,
+        "f1": 0.1212
+      },
+      "kyc": {
+        "n": 15,
+        "confusion": {
+          "tp": 14,
+          "fp": 46,
+          "tn": 45,
+          "fn": 1
+        },
+        "accuracy": 0.5566,
+        "precision": 0.2333,
+        "recall": 0.9333,
+        "f1": 0.3733
+      },
+      "loan": {
+        "n": 5,
+        "confusion": {
+          "tp": 4,
+          "fp": 56,
+          "tn": 45,
+          "fn": 1
+        },
+        "accuracy": 0.4623,
+        "precision": 0.0667,
+        "recall": 0.8,
+        "f1": 0.1231
+      },
+      "upi_payment": {
+        "n": 11,
+        "confusion": {
+          "tp": 8,
+          "fp": 52,
+          "tn": 43,
+          "fn": 3
+        },
+        "accuracy": 0.4811,
+        "precision": 0.1333,
+        "recall": 0.7273,
+        "f1": 0.2254
+      }
+    },
+    "note": "5 of 13 non-safe categories have enough samples for per-category metrics.",
+    "analyser_to_dataset_map": {
+      "fake_kyc": "kyc",
+      "upi_payment": "upi_payment",
+      "phishing": "phishing",
+      "bank_impersonation": "bank_impersonation",
+      "government_impersonation": "government_impersonation",
+      "credential_theft": "credential_theft",
+      "fake_customer_care": "customer_care",
+      "job_scam": "job",
+      "investment_scam": "investment",
+      "loan_scam": "loan",
+      "delivery_scam": "delivery",
+      "lottery_prize": "lottery",
+      "social_media_impersonation": "social_impersonation",
+      "other": "other",
+      "safe": "safe"
+    }
+  },
+  "latency": {
+    "iterations": 20,
+    "engines": {
+      "message": {
+        "mean_ms": 28.21,
+        "median_ms": 27.681,
+        "min_ms": 27.239,
+        "max_ms": 31.4,
+        "stdev_ms": 1.065,
+        "n": 20,
+        "input_type": "message"
+      },
+      "url": {
+        "mean_ms": 1.809,
+        "median_ms": 1.583,
+        "min_ms": 1.548,
+        "max_ms": 4.268,
+        "stdev_ms": 0.653,
+        "n": 20,
+        "input_type": "url"
+      },
+      "upi": {
+        "mean_ms": 0.247,
+        "median_ms": 0.148,
+        "min_ms": 0.068,
+        "max_ms": 2.407,
+        "stdev_ms": 0.512,
+        "n": 20,
+        "input_type": "upi"
+      },
+      "qr": {
+        "mean_ms": 23.282,
+        "median_ms": 22.99,
+        "min_ms": 21.545,
+        "max_ms": 26.788,
+        "stdev_ms": 1.178,
+        "n": 20,
+        "input_type": "qr"
+      },
+      "unified_message": {
+        "mean_ms": 27.784,
+        "median_ms": 27.615,
+        "min_ms": 25.758,
+        "max_ms": 29.545,
+        "stdev_ms": 0.924,
+        "n": 20,
+        "input_type": "message"
+      }
+    }
+  },
+  "limitations": {
+    "dataset_synthetic": "The labelled dataset is synthetic (template-generated) and includes a small public sample. Evaluation numbers do not generalise to production traffic.",
+    "cross_split_leakage": "Normalised text leakage across splits inflates held-out metrics. A leakage-clean evaluation is provided separately.",
+    "class_imbalance": "Test set is imbalanced (more scam than safe).",
+    "ml_training_size": "ML model trained on ~285 samples — too small for reliable generalisation.",
+    "rule_coverage": "The rule engine is conservative by design and favours recall over precision; it may produce more false positives.",
+    "url_static_only": "URL engine is structural/static only — no reputation, DNS, or content analysis.",
+    "qr_decode_dependency": "QR decode depends on local cv2 backend.",
+    "no_live_threat_intel": "No external threat intelligence or APIs are used anywhere.",
+    "combined_is_rule_driven": "On message inputs, the combined ScamShield verdict is driven by the deterministic rule engine; ML does not alter the top-level is_suspicious. The combined result is expected to match the rule engine on the message benchmark by design."
+  }
+}

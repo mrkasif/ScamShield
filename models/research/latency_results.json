@@ -1,0 +1,50 @@
+{
+  "iterations": 20,
+  "engines": {
+    "message": {
+      "mean_ms": 28.21,
+      "median_ms": 27.681,
+      "min_ms": 27.239,
+      "max_ms": 31.4,
+      "stdev_ms": 1.065,
+      "n": 20,
+      "input_type": "message"
+    },
+    "url": {
+      "mean_ms": 1.809,
+      "median_ms": 1.583,
+      "min_ms": 1.548,
+      "max_ms": 4.268,
+      "stdev_ms": 0.653,
+      "n": 20,
+      "input_type": "url"
+    },
+    "upi": {
+      "mean_ms": 0.247,
+      "median_ms": 0.148,
+      "min_ms": 0.068,
+      "max_ms": 2.407,
+      "stdev_ms": 0.512,
+      "n": 20,
+      "input_type": "upi"
+    },
+    "qr": {
+      "mean_ms": 23.282,
+      "median_ms": 22.99,
+      "min_ms": 21.545,
+      "max_ms": 26.788,
+      "stdev_ms": 1.178,
+      "n": 20,
+      "input_type": "qr"
+    },
+    "unified_message": {
+      "mean_ms": 27.784,
+      "median_ms": 27.615,
+      "min_ms": 25.758,
+      "max_ms": 29.545,
+      "stdev_ms": 0.924,
+      "n": 20,
+      "input_type": "message"
+    }
+  }
+}

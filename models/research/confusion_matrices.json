@@ -1,0 +1,21 @@
+{
+  "rule_engine": {
+    "true_positive": 58,
+    "false_negative": 22,
+    "false_positive": 2,
+    "true_negative": 24
+  },
+  "ml": {
+    "true_positive": 79,
+    "false_negative": 1,
+    "false_positive": 0,
+    "true_negative": 26
+  },
+  "combined": {
+    "true_positive": 58,
+    "false_negative": 22,
+    "false_positive": 2,
+    "true_negative": 24
+  },
+  "leakage_clean_combined": null
+}

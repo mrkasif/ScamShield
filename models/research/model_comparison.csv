@@ -1,0 +1,4 @@
+system,accuracy,precision,recall,f1,n_samples,note
+Rule Engine,0.7736,0.9667,0.725,0.8286,106,False negatives = scam predicted as safe (missed threats - the higher-risk error for users). False positives = safe predicted as scam (harms trust / causes friction).
+Local ML,0.9906,1.0,0.9875,0.9937,106,False negatives = scam predicted as safe (missed threats - the higher-risk error for users). False positives = safe predicted as scam (harms trust / causes friction).
+Combined ScamShield,0.7736,0.9667,0.725,0.8286,106,False negatives = scam predicted as safe (missed threats - the higher-risk error for users). False positives = safe predicted as scam (harms trust / causes friction).
