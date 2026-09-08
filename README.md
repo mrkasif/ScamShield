@@ -1,7 +1,7 @@
 # ScamShield
 
 **Indian Digital Scam Intelligence & Prevention System**
-Aavishkar college innovation/research prototype (zero-budget, lightweight, explainable).
+Aavishkar College innovation/research prototype (zero-budget, lightweight, explainable).
 
 ---
 
@@ -421,8 +421,8 @@ none in the browser.
 python web/app.py
 # or
 python -m web.app
-# Environment variables: SCAMSHIELD_HOST (127.0.0.1), SCAMSHIELD_PORT (5000),
-# SCAMSHIELD_DEBUG (0/1).
+# Environment variables: HOST/SCAMSHIELD_HOST (127.0.0.1), PORT/SCAMSHIELD_PORT (5000),
+# DEBUG/SCAMSHIELD_DEBUG (0/1).
 ```
 
 WSGI-ready: the module exports `app` (`web.app:app`), so it can be served by
@@ -566,7 +566,7 @@ src/scamshield/    analysis engine (Steps 3-8)
   explain/         human-readable explanation generation - currently folded into nlp/
 
 models/            trained ML artifacts - `scamshield_tfidf.joblib` (committed for deployment),
-                   `metrics.json`, `evaluation_report.md
+                   `metrics.json`, `evaluation_report.md`
   research/        research evaluation artefacts (JSON/CSV/Markdown)
 app/               legacy CLI demos + legacy Streamlit prototype `app/ui.py` (Step 9; NOT the final frontend) - see app/README.md
 web/               FINAL frontend - Flask app `web/app.py` + `templates/index.html` + `static/app.js`/`static/style.css` - see web/README.md
@@ -590,7 +590,8 @@ Do not install paid APIs or commercial datasets.
 
 ```bash
 python web/app.py          # dev server -> http://127.0.0.1:5000
-# or production-style (reads gunicorn.conf.py):
+# or production-style (reads gunicorn.conf.py - gunicorn is Linux/macOS
+# only; on Windows use `python web/app.py`, and Render runs gunicorn):
 gunicorn web.app:app
 ```
 
