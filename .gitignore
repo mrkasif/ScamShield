@@ -31,6 +31,9 @@ Thumbs.db
 .idea/
 .vscode/
 
+# Generated documentation deliverables (build artifacts)
+process_threat_detection/
+
 # Data dumps (keep schema samples; ignore large raw pulls)
 data/raw/*.zip
 data/raw/*.tar.gz
