@@ -6,6 +6,7 @@
   <meta name="color-scheme" content="dark">
   <title>ScamShield — Indian Digital Scam Intelligence</title>
   <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/identity.css">
   <script id="research-payload" type="application/json">{{ research_payload | tojson | safe }}</script>
 </head>
 <body>
@@ -22,6 +23,7 @@
         <a href="#overview" class="nav-link is-active" data-page="overview"><span class="nav-icon">OVW</span>Overview</a>
         <a href="#message" class="nav-link" data-page="message"><span class="nav-icon">MSG</span>Message Intelligence</a>
         <a href="#url" class="nav-link" data-page="url"><span class="nav-icon">URL</span>URL Intelligence</a>
+        <a href="#link-change" class="nav-link" data-page="link-change"><span class="nav-icon">LNK</span>Link Purifier</a>
         <a href="#qr" class="nav-link" data-page="qr"><span class="nav-icon">QR</span>QR Analyzer</a>
         <a href="#upi" class="nav-link" data-page="upi"><span class="nav-icon">UPI</span>UPI Analyzer</a>
         <a href="#chain" class="nav-link" data-page="chain"><span class="nav-icon">CHN</span>Attack Chain</a>
@@ -46,11 +48,18 @@
         </div>
         <div class="top-status">
           <div class="top-line"><span class="dot" id="sys-online"></span><span id="sys-online-text">SYSTEM ONLINE</span></div>
-          <div class="top-sub">Local / Offline Analysis</div>
+          <div class="top-sub">LOCAL ANALYSIS &middot; OFFLINE</div>
         </div>
       </header>
 
       <main class="content" id="content">
+        <div class="zone-legend" aria-label="Safety zone legend">
+          <span class="zone-legend-title">SAFETY ZONES</span>
+          <span class="z-chip z-green"><b>GREEN</b> 0&ndash;24 &mdash; Minimal or no threat</span>
+          <span class="z-chip z-yellow"><b>YELLOW</b> 25&ndash;59 &mdash; Risk detected, continue carefully</span>
+          <span class="z-chip z-red"><b>RED</b> 60&ndash;100 &mdash; Dangerous, stop and verify</span>
+        </div>
+
         <!-- ===================== OVERVIEW ===================== -->
         <section class="page is-active" id="page-overview" aria-label="Overview">
           <div class="hero">
@@ -60,8 +69,12 @@
             <p class="hero-desc">Analyze suspicious messages, URLs, QR codes and UPI payment
               requests using local security intelligence and explainable risk analysis.</p>
             <div class="hero-actions">
-              <button class="btn primary" data-goto="message">Analyze Message</button>
+              <button class="btn primary" data-goto="message">Analyze Something</button>
+            </div>
+            <p class="hero-scans-label">OPEN A SCANNER</p>
+            <div class="hero-actions">
               <button class="btn" data-goto="url">Analyze URL</button>
+              <button class="btn" data-goto="link-change">Purify Link</button>
               <button class="btn" data-goto="qr">Scan QR</button>
               <button class="btn" data-goto="upi">Analyze UPI</button>
               <button class="btn" data-goto="chain">Build Attack Chain</button>
@@ -69,12 +82,12 @@
           </div>
 
           <div class="cap-grid" id="cap-grid">
-            <div class="cap" data-code="MESSAGE INTELLIGENCE"><span class="cap-label">MESSAGE INTELLIGENCE</span><span class="cap-tag">Rule-based multilingual text analysis</span><span class="cap-val">Online</span></div>
-            <div class="cap" data-code="URL INTELLIGENCE"><span class="cap-label">URL INTELLIGENCE</span><span class="cap-tag">Static structural URL analysis</span><span class="cap-val">Online</span></div>
-            <div class="cap" data-code="QR ANALYSIS"><span class="cap-label">QR ANALYSIS</span><span class="cap-tag">Local QR decode + routing</span><span class="cap-val">Online</span></div>
-            <div class="cap" data-code="UPI ANALYSIS"><span class="cap-label">UPI ANALYSIS</span><span class="cap-tag">Static payment-request parsing</span><span class="cap-val">Online</span></div>
+            <div class="cap" data-code="MESSAGE INTELLIGENCE"><span class="cap-label">MESSAGE INTELLIGENCE</span><span class="cap-tag">Rule-based multilingual text analysis</span><span class="cap-val">Local</span></div>
+            <div class="cap" data-code="URL INTELLIGENCE"><span class="cap-label">URL INTELLIGENCE</span><span class="cap-tag">Static structural URL analysis</span><span class="cap-val">Local</span></div>
+            <div class="cap" data-code="QR ANALYSIS"><span class="cap-label">QR ANALYSIS</span><span class="cap-tag">Local QR decode + routing</span><span class="cap-val">Local</span></div>
+            <div class="cap" data-code="UPI ANALYSIS"><span class="cap-label">UPI ANALYSIS</span><span class="cap-tag">Static payment-request parsing</span><span class="cap-val">Local</span></div>
             <div class="cap" data-code="LOCAL ML"><span class="cap-label">LOCAL ML</span><span class="cap-tag">TF-IDF + Logistic Regression</span><span class="cap-val-check" id="cap-ml">Checking</span></div>
-            <div class="cap" data-code="ATTACK CHAIN"><span class="cap-label">ATTACK CHAIN</span><span class="cap-tag">Multi-stage correlation</span><span class="cap-val">Online</span></div>
+            <div class="cap" data-code="ATTACK CHAIN"><span class="cap-label">ATTACK CHAIN</span><span class="cap-tag">Multi-stage correlation</span><span class="cap-val">Local</span></div>
           </div>
 
           <div class="panel">
@@ -120,7 +133,7 @@
         <!-- ===================== URL ===================== -->
         <section class="page" id="page-url" aria-label="URL intelligence">
           <div class="page-head"><h2 class="page-title">URL Intelligence</h2>
-            <p class="page-sub">Statical structural analysis of a suspicious link.</p></div>
+            <p class="page-sub">Static structural analysis of a suspicious link.</p></div>
           <div class="panel workspace">
             <label class="field-label" for="url-input">URL</label>
             <div class="url-row">
@@ -132,6 +145,26 @@
           <div class="notice">ScamShield analyzes the URL statically. It does not open, visit,
             download from, or execute the destination.</div>
           <div class="result" id="url-result" aria-live="polite"></div>
+        </section>
+
+        <!-- ===================== LINK PURIFIER ===================== -->
+        <section class="page" id="page-link-change" aria-label="Link purifier / safety monitor">
+          <div class="page-head"><h2 class="page-title">Link Purifier / Safety Monitor</h2>
+            <p class="page-sub">Safely normalize and inspect a link, or compare it with a previously observed version.</p></div>
+          <div class="panel workspace">
+            <label class="field-label" for="lc-baseline">Baseline URL <span class="muted">(previously observed, optional)</span></label>
+            <div class="url-row">
+              <input id="lc-baseline" type="text" placeholder="https://example.com/support" autocomplete="off" spellcheck="false">
+            </div>
+            <label class="field-label" for="lc-current">Current URL</label>
+            <div class="url-row">
+              <input id="lc-current" type="text" placeholder="https://example.com/support?redirect=https%3A%2F%2Fsuspicious.example%2Flogin" autocomplete="off" spellcheck="false">
+              <button class="btn primary" id="lc-scan">Inspect / Compare Link</button>
+            </div>
+            <div class="btn-row"><button class="btn" id="lc-clear">Clear</button></div>
+          </div>
+          <div class="notice">Links are analyzed STATICALLY only &mdash; never opened, resolved or followed. To compare, paste a baseline and the current link; to inspect a single link, fill only the current URL. "Purify" means the link is safely normalized and shown for inspection &mdash; ScamShield never repairs or generates links.</div>
+          <div class="result" id="lc-result" aria-live="polite"></div>
         </section>
 
         <!-- ===================== QR ===================== -->

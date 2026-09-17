@@ -43,6 +43,8 @@ User Input
 | `qr/` | QR decoding and analysis of decoded destinations | **Working** - `analyze_qr()`, `analyze_qr_content()` |
 | `ml/` | Local ML intelligence (TF-IDF + Logistic Regression, binary scam/safe) | **Working** - `predict_message()` - see `ml/README.md` |
 | `chain/` | Multi-stage scam / attack-chain correlation of already-analysed artifacts | **Working** - `analyze_chain()` - see `chain/README.md` |
+| `link_change/` | Phishing Link Purifier / Link Safety Monitor - static normalization + baseline-vs-current change monitoring | **Working** - `analyze_link_change()` - see `link_change/README.md` |
+| `safetyzones.py` | Unified Safety-Zone System (GREEN/YELLOW/RED) + explainable `risk_assessment` + truthful `risk_breakdown` - pure derivation from the existing authoritative score, no re-scoring | **Working** - `zone_for_score()`, `attach_risk_presentation()` |
 | `research/` | Reproducible local Research & Evaluation Lab - dataset/ML/rule/combined eval, latency, leakage audit | **Working** - `python -m app.research_eval` - see `research/README.md` |
 | `analyzer.py` | **Unified ScamShield Analyzer** - orchestrates the engines into ONE consistent result schema | **Working** |
 | `risk/` | Combines evidence from NLP + URL + QR into a 0-100 risk score | Folded into the engines / `analyzer.py` |
@@ -69,6 +71,9 @@ analyze("url", "https://secure-sbi-verify.example.com/login")
 analyze("qr", "tests/fixtures/qr/url_suspicious.png")
 analyze("upi", "upi://pay?pa=merchant@upi&pn=Store&am=60&cu=INR")
 analyze("chain", [message_result, url_result, upi_result])   # multi-stage chain
+analyze("link_change", {"url": "https://example.com/support"})                # purify/inspect one link
+analyze("link_change", {"baseline_url": "https://example.com/support",        # compare baseline vs current
+                        "current_url": "https://example.com/support?redirect=evil.example"})
 
 detect_input_type("https://example.com")   # "url"
 detect_input_type("upi://pay?pa=a@upi")    # "upi"
@@ -97,7 +102,10 @@ results are preserved under `engine_results["chain_per_stage"]`.
 
 ### Input types
 
-`"message" | "url" | "qr" | "upi" | "chain"`.
+`"message" | "url" | "qr" | "upi" | "chain" | "link_change"`.
+
+Aliases for `link_change`: `"link-change"`, `"linkchange"`, `"purify"`,
+`"purifier"`, `"link_purifier"`, `"link_safety"`, `"link_monitor"`, `"compare"`.
 
 - **`message`** - routed to `scamshield.nlp.analyze_message()`.
 - **`url`** - routed to `scamshield.url.analyze_url()`.
@@ -255,17 +263,22 @@ python -m app.analyze --type url --input "https://example.com" --json   # raw JS
 
 ```bash
 python -m pytest tests/ -q
-# 472 passed (50 message + 95 URL + 56 QR + 84 unified analyzer
-#             + 40 ML intelligence + 49 chain correlation + 16 frontend
-#             + 30 research evaluation + 52 Flask API & E2E scenarios)
+# 550 passed (50 message + 95 URL + 56 QR + 84 unified analyzer
+#             + 40 ML intelligence + 49 chain correlation + 37 link_change purifier
+#             + 37 safety zones + 16 frontend + 30 research evaluation + 56 Flask API & E2E scenarios)
 ```
 
 The unified layer is covered by `tests/test_unified_analyzer.py` (84 tests,
 including a monkeypatched-socket no-network guard). The chain layer is covered
 by `tests/test_chain_analysis.py` (49 tests). The research & evaluation lab is
-covered by `tests/test_research.py` (30 tests). The final Flask frontend is
-covered by `tests/test_flask_api.py` and `tests/test_web_scenarios.py` (52 tests,
-including QR temp-file cleanup and a no-network guard).
+covered by `tests/test_research.py` (30 tests). The safety-zone / explainable
+risk layer is covered by `tests/test_safetyzones.py` (37 tests: exact
+GREEN/YELLOW/RED boundary behaviour, evidence-only reasons/breakdowns, schema
+compatibility, link-change integration and no-network guards). The final Flask
+frontend is covered by `tests/test_flask_api.py` and `tests/test_web_scenarios.py`
+(56 tests, including QR temp-file cleanup, the link-change endpoint, and a
+no-network guard). The build-time reload no-network guard covers every engine
+including `link_change`.
 
 ### Research & Evaluation Lab
 

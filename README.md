@@ -105,7 +105,7 @@ User Input
    Flask Web App / API          (web/)  <-- final frontend (run locally)
 ```
 
-**Note**: Multi-stage scam-chain detection (identifying sequences of related scam artifacts) is implemented in `src/scamshield/chain` as a **research/prototype correlation layer** — see the component section below.
+**Note**: Multi-stage scam-chain detection (identifying sequences of related scam artifacts) is implemented in `src/scamshield/chain` as a **research/prototype correlation layer** — see the component section below. The **Phishing Link Purifier / Link Safety Monitor** (`src/scamshield/link_change`, see its README) inspects and compares links statically and reuses the URL engine's verdict — it never opens, resolves or follows links.
 
 ## Research methodology
 
@@ -161,17 +161,22 @@ A lightweight model is preferred if it performs comparably to heavier alternativ
 | Tests for unified analyzer | 84 passing unit tests |
 | Multi-stage scam-chain analysis | **Working** - `scamshield.analyze_chain()`, `scamshield.analyze("chain", [...])` (research/prototype correlation layer) |
 | Tests for chain analysis | 49 passing unit tests |
+| Phishing Link Purifier / Link Safety Monitor | **Working** - `scamshield.link_change.purify_url()`, `scamshield.link_change.compare_urls()`, `scamshield.analyze("link_change", ...)` (static, offline: never opens, resolves or follows links) |
+| Tests for link_change (link purifier) | 37 passing unit tests (engine) + 4 (Flask endpoint) |
+| Safety-Zone System + Explainable Risk Assessment | **Working** - unified GREEN/YELLOW/RED zone derived from the existing authoritative score; `risk_assessment` + truthful `risk_breakdown` built only from existing engine evidence (`scamshield.safetyzones`) |
+| Tests for safety zones | 37 passing unit tests |
 | Streamlit Command Center UI | **LEGACY prototype** - `streamlit run app/ui.py` (retained in the repo, NOT the final frontend) |
 | Tests for frontend smoke layer | 16 passing unit tests |
 | Flask Web Command Center | **FINAL frontend** - `python web/app.py` or `python -m web.app` (Flask + vanilla JS, one API over all engines) |
-| Tests for Flask API + E2E scenarios | 52 passing unit tests |
+| Tests for Flask API + E2E scenarios | 56 passing unit tests (incl. 4 link-change endpoint tests) |
 | User interface | **Final** - Flask web app (`web/`) |
 | Research & Evaluation Lab | **Working** - `python -m app.research_eval` (dataset/ML/rule/combined eval, latency, leakage audit) |
 | Tests for research evaluation | 30 passing unit tests |
 
 The repository currently contains the **dataset foundation**, **research
-documentation**, **working message, URL, QR, local-ML and chain-correlation
-components**, the **Flask Web Command Center (final frontend)**, and the
+documentation**, **working message, URL, QR, local-ML, link-change and
+chain-correlation components**, a **unified safety-zone system with explainable
+risk assessment**, the **Flask Web Command Center (final frontend)**, and the
 **research & evaluation lab** (below).
 Cloud/API integration and future steps remain.
 
@@ -312,7 +317,7 @@ python -m app.analyze --type qr --input "tests/fixtures/qr/url_suspicious.png"
 python -m app.analyze --type upi --input "upi://pay?pa=scam@refunds&am=50000&tn=reward"
 python -m app.analyze --type message --input "Your KYC has expired..." --json
 
-# Full test suite (472 = 50 message + 95 URL + 56 QR + 84 unified + 40 ML + 49 chain + 28 Flask API + 16 frontend + 30 research + 24 web scenarios)
+# Full test suite (550 = 50 message + 95 URL + 56 QR + 84 unified + 40 ML + 49 chain + 37 link_change + 37 safety_zones + 32 Flask API + 16 frontend + 30 research + 24 web scenarios)
 python -m pytest tests/ -q
 ```
 
@@ -560,8 +565,10 @@ src/scamshield/    analysis engine (Steps 3-8)
   qr/              static QR decode + URL/UPI/text routing (WORKING engine) - see qr/README.md
   ml/              local ML intelligence (TF-IDF + LogReg) (WORKING) - see ml/README.md
   chain/           multi-stage scam-chain correlation (WORKING) - see chain/README.md
+  link_change/     Phishing Link Purifier / Link Safety Monitor (WORKING) - see link_change/README.md
+  safetyzones.py   unified GREEN/YELLOW/RED safety zone + risk_assessment + truthful risk_breakdown (WORKING)
   research/        Research & Evaluation Lab (WORKING) - see research/README.md
-  analyzer.py      Unified ScamShield Analyzer (WORKING) - one schema over message/URL/QR/UPI/ML/chain
+  analyzer.py      Unified ScamShield Analyzer (WORKING) - one schema over message/URL/QR/UPI/ML/chain/link_change
   risk/            risk score engine (0-100) - currently folded into nlp/
   explain/         human-readable explanation generation - currently folded into nlp/
 
@@ -570,7 +577,7 @@ models/            trained ML artifacts - `scamshield_tfidf.joblib` (committed f
   research/        research evaluation artefacts (JSON/CSV/Markdown)
 app/               legacy CLI demos + legacy Streamlit prototype `app/ui.py` (Step 9; NOT the final frontend) - see app/README.md
 web/               FINAL frontend - Flask app `web/app.py` + `templates/index.html` + `static/app.js`/`static/style.css` - see web/README.md
-tests/             unit tests (`tests/test_scamshield.py`, `tests/test_url_engine.py`, `tests/test_qr_engine.py`, `tests/test_unified_analyzer.py`, `tests/test_ml_engine.py`, `tests/test_chain_analysis.py`, `tests/test_frontend.py`, `tests/test_research.py`, `tests/test_flask_api.py`, `tests/test_web_scenarios.py`)
+tests/             unit tests (`tests/test_scamshield.py`, `tests/test_url_engine.py`, `tests/test_qr_engine.py`, `tests/test_unified_analyzer.py`, `tests/test_ml_engine.py`, `tests/test_chain_analysis.py`, `tests/test_link_change.py`, `tests/test_safetyzones.py`, `tests/test_frontend.py`, `tests/test_research.py`, `tests/test_flask_api.py`, `tests/test_web_scenarios.py`)
 scripts/           dataset building, training, evaluation entry points
 research/          notes, metrics, gap analysis, demo cases
 ```

@@ -321,3 +321,49 @@ def test_flask_layer_makes_no_network_requests(client, monkeypatch) -> None:
     r = _qr_upload(client, "url_suspicious.png")
     assert r.status_code == 200
     assert client.post("/api/analyze/chain", json={"stages": []}).status_code == 200
+    assert client.post("/api/analyze/link-change",
+                       json={"url": SUSPICIOUS_URL}).status_code == 200
+
+
+# ---------------------------------------------------------------------------
+# Link Purifier / Link Safety Monitor (link_change) endpoint
+# ---------------------------------------------------------------------------
+
+def test_link_change_purify_endpoint(client) -> None:
+    r = client.post("/api/analyze/link-change",
+                    json={"url": "https://example.com/support"})
+    data = r.get_json()
+    assert r.status_code == 200
+    assert data["success"] is True
+    assert data["input_type"] == "link_change"
+    assert data["mode"] == "purify"
+    assert data["comparison"]["compared"] is False
+
+
+def test_link_change_compare_endpoint(client) -> None:
+    r = client.post("/api/analyze/link-change",
+                    json={"baseline_url": "https://example.com/support",
+                          "current_url": "https://example.com/support?redirect=evil.example"})
+    data = r.get_json()
+    assert r.status_code == 200
+    assert data["mode"] == "compare"
+    assert data["comparison"]["compared"] is True
+    assert data["comparison"]["change_count"] >= 1
+    assert data["purifier"]["redirect_detected"] is True
+
+
+def test_link_change_alias_keys(client) -> None:
+    r = client.post("/api/analyze/link-change",
+                    json={"baseline": "https://example.com/a",
+                          "current": "https://example.com/a?x=1"})
+    assert r.status_code == 200
+    assert r.get_json()["mode"] == "compare"
+
+
+def test_link_change_validation_errors(client) -> None:
+    assert client.post("/api/analyze/link-change", json={}).status_code == 400
+    assert client.post("/api/analyze/link-change",
+                       json={"url": 123}).status_code == 400
+    r = client.post("/api/analyze/link-change", data="nope",
+                    content_type="text/plain")
+    assert r.status_code == 400

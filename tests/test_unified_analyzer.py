@@ -39,6 +39,13 @@ TOP_LEVEL_KEYS = {
     "is_suspicious", "scam_type", "confidence", "confidence_type",
     "confidence_note", "summary", "indicators", "explanation",
     "recommendations", "evidence", "engine_results", "warnings",
+    # Additive safety-zone / explainability presentation (derived from the
+    # existing authoritative score + engine evidence; never a second scorer).
+    "zone", "zone_label", "zone_description", "recommended_action",
+    "risk_assessment", "risk_breakdown",
+    # Additive Indian scam-intelligence interpretation (deterministic,
+    # evidence-driven, offline; purely additive - see scam_intel.py).
+    "scam_intelligence",
 }
 
 

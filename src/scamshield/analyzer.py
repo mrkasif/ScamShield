@@ -15,6 +15,7 @@ result schema:
     scamshield.url.analyze_url()       ("url")
     scamshield.qr.analyze_qr()         ("qr" - image path)
     scamshield.qr.analyze_qr_content() ("upi" - a decoded UPI URI string)
+    scamshield.link_change            ("link_change" - Link Purifier / Monitor)
 
 Security: inherits the restrictions of the underlying engines - fully local,
 deterministic, no network requests, no URL opening, no payment execution, no
@@ -29,6 +30,8 @@ from pathlib import Path
 from .nlp import analyze_message
 from .qr import analyze_qr as _analyze_qr
 from .qr import analyze_qr_content as _analyze_qr_content
+from .safetyzones import attach_risk_presentation as _attach_risk_presentation
+from .scam_intel import attach_scam_intelligence as _attach_scam_intelligence
 from .url import analyze_url as _analyze_url
 
 __all__ = ["analyze", "analyze_batch", "detect_input_type", "analyze_chain"]
@@ -37,7 +40,7 @@ __all__ = ["analyze", "analyze_batch", "detect_input_type", "analyze_chain"]
 # Input type handling
 # ---------------------------------------------------------------------------
 
-CANONICAL_TYPES = ("message", "url", "qr", "upi", "chain")
+CANONICAL_TYPES = ("message", "url", "qr", "upi", "chain", "link_change")
 
 TYPE_ALIASES = {
     "message": "message", "msg": "message", "text": "message",
@@ -45,6 +48,11 @@ TYPE_ALIASES = {
     "qr": "qr", "qrcode": "qr", "qr_image": "qr", "image": "qr",
     "upi": "upi", "upi_uri": "upi",
     "chain": "chain", "chain_analysis": "chain", "multistage": "chain",
+    "link_change": "link_change", "link-change": "link_change",
+    "linkchange": "link_change", "purify": "link_change",
+    "purifier": "link_change", "link_purifier": "link_change",
+    "link_safety": "link_change", "link_monitor": "link_change",
+    "compare": "link_change",
 }
 
 RISK_LEVELS = ("LOW", "MEDIUM", "HIGH", "CRITICAL")
@@ -693,6 +701,30 @@ def _analyze_qr_input(content, metadata: dict) -> dict:
     return _build_unified("qr", engine_result, metadata)
 
 
+def _analyze_link_change_input(content, metadata: dict) -> dict:
+    """Inspect/purify a URL or compare a baseline vs current URL version.
+
+    ``content`` may be a str (single-link purification) or a dict:
+        {"url": "..."}                              -> purification (mode 1)
+        {"baseline_url": "...", "current_url": "..."} -> compare (mode 2)
+
+    The link_change engine reuses the existing URL Intelligence detectors and
+    the authoritative URL risk score; the purifier/comparison layer only adds
+    defensive flags, a change list and an informative (capped) change impact.
+    Fully local and static - the URL is never opened, resolved or followed.
+    """
+    from .link_change import analyze_link_change as _run_link_change
+
+    if not isinstance(content, dict) and not isinstance(content, str):
+        return _error_result(
+            "link_change",
+            "link_change content must be a URL string or a dict with 'url', "
+            "or 'baseline_url' + 'current_url'.",
+            "validation",
+        )
+    return _run_link_change(content)
+
+
 def _analyze_chain_input(content, metadata: dict) -> dict:
     """Analyze an ordered collection of already-analyzed artifacts as a possible
     multi-stage scam chain.
@@ -773,17 +805,35 @@ def _analyze_chain_input(content, metadata: dict) -> dict:
 # Public API
 # ---------------------------------------------------------------------------
 
+def _finalize_result(result: dict) -> dict:
+    """Additive, deterministic final presentation for every unified result.
+
+    Runs the authoritative Safety-Zone risk presentation first (unchanged:
+    it remains the single source of zone / zone_label / recommended_action /
+    risk_assessment / risk_breakdown, derived only from the existing
+    authoritative score and engine evidence) and then the additive,
+    evidence-driven Indian scam-intelligence section (``scam_intelligence``).
+    Both are purely additive: neither re-scores, neither changes any existing
+    key, and the Risk Zone stays authoritative.
+    """
+    return _attach_scam_intelligence(_attach_risk_presentation(result))
+
+
 def analyze(input_type, content, **metadata) -> dict:
     """Analyze one input of the given type and return the unified result.
 
     Supported input types: "message", "url", "qr" (image path), "upi" (a
-    decoded UPI URI string, routed through the QR content analyzer).
+    decoded UPI URI string, routed through the QR content analyzer),
+    "link_change" (dict or str - see below).
 
     Examples:
         analyze("message", "Your KYC has expired...")
         analyze("url", "https://example.com/login")
         analyze("qr", "tests/fixtures/qr/url_suspicious.png")
         analyze("upi", "upi://pay?pa=merchant@upi&pn=Store&am=60&cu=INR")
+        analyze("link_change", {"url": "https://example.com/support"})
+        analyze("link_change", {"baseline_url": "https://example.com/support",
+                                "current_url": "https://example.com/support?redirect=..."})
 
     Deterministic and fully local. Extra keyword metadata is accepted for
     forward compatibility with a future HTTP API and currently unused.
@@ -792,25 +842,34 @@ def analyze(input_type, content, **metadata) -> dict:
     risk_level, is_suspicious, scam_type, confidence, confidence_type,
     confidence_note, summary, indicators, explanation, recommendations,
     evidence, engine_results (the full original engine result), warnings.
+    Every result additionally exposes the additive safety-zone presentation
+    (zone / zone_label / zone_description / recommended_action / risk_assessment
+    / risk_breakdown), derived from the existing authoritative score and the
+    already-produced engine evidence - never from a second scoring system.
     """
     itype = _normalize_input_type(input_type)
     if itype is None:
-        return _error_result(
+        result = _error_result(
             _normalize_raw_type(input_type),
             f"Unsupported input type {input_type!r}. Expected one of: "
-            "message, url, qr, upi, chain.",
+            "message, url, qr, upi, chain, link_change.",
             "unsupported_type",
         )
+        return _finalize_result(result)
     metadata = dict(metadata)
     if itype == "message":
-        return _analyze_message_input(content, metadata)
-    if itype == "url":
-        return _analyze_url_input(content, metadata)
-    if itype == "upi":
-        return _analyze_upi_input(content, metadata)
-    if itype == "chain":
-        return _analyze_chain_input(content, metadata)
-    return _analyze_qr_input(content, metadata)
+        result = _analyze_message_input(content, metadata)
+    elif itype == "url":
+        result = _analyze_url_input(content, metadata)
+    elif itype == "upi":
+        result = _analyze_upi_input(content, metadata)
+    elif itype == "chain":
+        result = _analyze_chain_input(content, metadata)
+    elif itype == "link_change":
+        result = _analyze_link_change_input(content, metadata)
+    else:
+        result = _analyze_qr_input(content, metadata)
+    return _finalize_result(result)
 
 
 def analyze_chain(stages_material) -> dict:

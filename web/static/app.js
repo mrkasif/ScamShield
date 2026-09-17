@@ -121,6 +121,62 @@
     return "Threat Indicators";
   }
 
+  // ------------------------------ safety zone ------------------------------
+
+  function zoneClass(zone) {
+    var z = String(zone || "").toLowerCase();
+    if (z === "green") return "z-green";
+    if (z === "red") return "z-red";
+    return "z-yellow";
+  }
+
+  // Compact, backend-fed safety-zone presentation. All values come from the API
+  // (zone / risk_assessment / risk_breakdown); nothing is recomputed here.
+  function renderZone(result) {
+    if (!result || result.success === false) return "";
+    var zone = String(result.zone || "").toLowerCase();
+    if (!zone) return "";
+    var zc = zoneClass(zone);
+    var score = Number(result.risk_score) || 0;
+    var label = result.zone_label || humanizeUpper(zone);
+    var assessment = result.risk_assessment || {};
+    var reasons = assessment.reasons || [];
+    var breakD = result.risk_breakdown || {};
+    var factors = breakD.factors || [];
+
+    var html = '<div class="zone-block ' + zc + '">' +
+      '<div class="zone-head">SAFETY ZONE &mdash; ' + esc(String(zone).toUpperCase()) + "</div>" +
+      '<div class="zone-score">' + esc(score) + ' <span class="zone-score-unit">/ 100</span></div>' +
+      '<div class="zone-label">' + esc(label) + "</div>" +
+      (result.recommended_action ? '<div class="zone-action">' + esc(result.recommended_action) + "</div>" : "") +
+      '<div class="zone-meta">RISK ' + esc(result.risk_level || "") +
+      " &middot; CONFIDENCE " + esc(result.confidence != null ? result.confidence : "-") + "%</div>" +
+      "</div>";
+
+    if (reasons.length) {
+      var bullets = reasons.map(function (r) { return "<li>" + esc(r) + "</li>"; }).join("");
+      html += section("Why This Is Risky", '<ul class="recs zone-reasons">' + bullets + "</ul>");
+    }
+
+    if (factors.length) {
+      var rows = factors.map(function (f) {
+        var contrib = (typeof f.contribution === "number" && f.contribution > 0)
+          ? '<span class="z-contrib">+' + esc(f.contribution) + "</span>" : "";
+        var inds = (f.indicators || []).map(function (i) {
+          return '<span class="chip">' + esc(humanizeUpper(i)) + "</span>";
+        }).join("");
+        return '<div class="zfactor"><div class="zfactor-name">' +
+          esc(humanize(f.category).toUpperCase()) + contrib + "</div>" +
+          (inds ? '<div class="zfactor-inds">' + inds + "</div>" : "") + "</div>";
+      }).join("");
+      html += section("Risk Factors", '<div class="zfactors">' + rows + "</div>");
+      if (breakD.note) {
+        html += section("", '<div class="muted zone-note">' + esc(breakD.note) + "</div>");
+      }
+    }
+    return html;
+  }
+
   function renderSummary(result) {
     if (!result.summary) return "";
     return section("Summary", '<div class="summary">' + esc(result.summary) + "</div>");
@@ -300,6 +356,140 @@
     return '<div class="warning">' + esc(warnings.join(" / ")) + "</div>";
   }
 
+  // ------------------------------ link purifier ------------------------------
+
+  var LC_IMPACT_LABELS = {
+    risk_increasing: ["RISK UP", "high"],
+    negative: ["RISK DOWN", "low"],
+    neutral: ["NEUTRAL", "medium"]
+  };
+
+  function lcImpact(c) {
+    var m = LC_IMPACT_LABELS[c.risk_impact] || ["CHANGED", "medium"];
+    return '<span class="sev ' + m[1] + '">' + esc(m[0]) + "</span>" +
+      '<span class="why">' + esc(c.category + ": " + c.detail) +
+      (c.evidence ? ' <span class="ev">[' + esc(c.evidence) + "]</span>" : "") +
+      "</span>";
+  }
+
+  function renderSafeDestination(result) {
+    if (result.input_type !== "link_change") return "";
+    var dest = result.destination_analysis || {};
+    var safe = result.safe_destination || {};
+    var candidates = dest.candidates || [];
+
+    if (!dest.found || !candidates.length) {
+      return section("Destination Analysis",
+        '<div class="muted">No embedded destination detected. Nothing was invented or reconstructed.</div>') +
+        section("Safe Action",
+        '<div class="verdict-fields"><span class="pill medium">NO DESTINATION FOUND</span></div>' +
+        '<div class="summary">' + esc(safe.safe_action || "No embedded destination detected.") + "</div>");
+    }
+
+    var rows = candidates.map(function (c) {
+      var status = String(c.status || "UNKNOWN").toUpperCase();
+      var cls = status === "VERIFIED" ? "low" : (status === "SUSPICIOUS" ? "high" : "medium");
+      var source = String(c.source || "").toLowerCase();
+      var sourceLabel = source === "redirect_parameter" ? "REDIRECT PARAMETER"
+        : (source === "encoded_url" ? "ENCODED URL" : "NESTED URL");
+      if (c.destination_parameter) sourceLabel += " (" + String(c.destination_parameter).toUpperCase() + ")";
+      var brand = c.brand_evidence;
+      var brandHtml = "";
+      if (brand && brand.detected_brand) {
+        brandHtml = "<br>DETECTED BRAND: " + esc(String(brand.detected_brand).toUpperCase()) +
+          " &middot; SUBMITTED: " + esc(brand.submitted_hostname || "") +
+          (brand.expected_domains && brand.expected_domains.length
+            ? "<br>EXPECTED OFFICIAL: " + esc(brand.expected_domains.join(", ")) +
+              " (evidence only; ScamShield never rewrites the submitted address)" : "");
+      }
+      return '<div class="explainer"><span class="sev ' + cls + '">' + esc(status) + "</span>" +
+        '<span class="why">CANDIDATE DESTINATION: ' + esc(c.url) +
+        '<br>SOURCE: ' + esc(sourceLabel) + " &middot; DESTINATION RISK: " + esc(c.risk_score) + "/100 " +
+        esc(c.risk_level || "") + (c.is_suspicious ? " &middot; SUSPICIOUS" : " &middot; NOT SUSPICIOUS") +
+        brandHtml + "</span></div>";
+    }).join("");
+
+    var overall = String(safe.status || "DESTINATION_UNKNOWN").toUpperCase();
+    var safeCls = safe.available ? "low" : (overall === "UNSAFE_DESTINATION" ? "high" : "medium");
+    var safeHtml = '<div class="verdict-fields"><span class="pill ' + safeCls + '">' +
+      esc(overall.replace(/_/g, " ")) + "</span></div>";
+    if (safe.available && safe.url) {
+      safeHtml += '<div class="evidence-grid"><div class="erow"><span class="k">SAFE DESTINATION (PLAIN TEXT ONLY)</span>' +
+        '<span class="v">' + esc(safe.url) + "</span></div></div>";
+    }
+    safeHtml += '<div class="summary">' + esc(safe.safe_action || safe.reason || "") + "</div>";
+
+    return section("Destination Analysis", rows) + section("Safe Action", safeHtml);
+  }
+
+  function renderLinkChange(result) {
+    var html = "";
+    var mode = result.mode;
+    var flags = result.purifier || {};
+    var cmp = result.comparison || {};
+
+    var rows = [
+      ["Mode", mode === "compare" ? "Change Monitor (baseline vs current)" : "Single Link Inspection"],
+      ["Original URL", result.original_url],
+      ["Normalized URL", result.normalized_url],
+      ["Current URL", result.current_url]
+    ];
+    if (mode === "compare") rows.push(["Baseline URL", result.baseline_url]);
+    rows = rows.filter(function (p) { return p[1] != null && p[1] !== ""; });
+    var urlRows = rows.map(function (p) {
+      return '<div class="erow"><span class="k">' + esc(p[0].toUpperCase()) +
+        '</span><span class="v">' + esc(p[1]) + "</span></div>";
+    }).join("");
+    html += section("Purified / Inspected Representation", '<div class="evidence-grid">' + urlRows + "</div>");
+
+    var flagRows = [
+      ["Redirect Mechanism", flags.redirect_detected],
+      ["Nested URL", flags.nested_url_detected],
+      ["Encoded Destination", flags.encoded_destination_detected],
+      ["Obfuscation", flags.obfuscation_detected]
+    ].filter(function (p) { return typeof p[1] === "boolean"; }).map(function (p) {
+      var cls = p[1] ? "high" : "low";
+      return '<span class="pill ' + cls + '">' + esc(p[0].toUpperCase()) + ": " +
+        (p[1] ? "YES" : "NO") + "</span>";
+    }).join("");
+    if (flagRows) html += section("Purifier Signals", '<div class="verdict-fields">' + flagRows + "</div>");
+
+    var hidden = flags.hidden_components || [];
+    if (hidden.length) {
+      var items = hidden.map(function (h) { return "<li>" + esc(h) + "</li>"; }).join("");
+      html += section("Hidden Components", '<ul class="recs">' + items + "</ul>");
+    }
+
+    html += renderSafeDestination(result);
+
+    if (mode === "compare") {
+      var changes = cmp.changes || [];
+      var rising = (cmp.risk_increasing_changes || []).length;
+      var head = '<div class="verdict-fields">' +
+        '<span class="pill ' + (changes.length ? "medium" : "low") + '">CHANGES ' + esc(changes.length) + "</span>" +
+        '<span class="pill ' + (rising ? "high" : "low") + '">RISK-INCREASING ' + esc(rising) + "</span>";
+      if (typeof result.change_impact === "number" && result.change_impact > 0) {
+        head += '<span class="pill ' + (result.change_impact >= 40 ? "high" : "medium") +
+          '">CHANGE IMPACT ' + esc(result.change_impact) + '/70</span>';
+      }
+      if (typeof result.risk_delta === "number" && result.risk_delta !== 0) {
+        head += '<span class="pill ' + (result.risk_delta > 0 ? "high" : "low") +
+          '">RISK DELTA ' + (result.risk_delta > 0 ? "+" : "") + esc(result.risk_delta) + "</span>";
+      }
+      head += "</div>";
+      if (!changes.length) {
+        html += section("Link Change Monitor", head +
+          '<div class="summary">No structural changes detected between the baseline and the current link.</div>');
+      } else {
+        var crows = changes.map(function (c) {
+          return '<div class="explainer">' + lcImpact(c) + "</div>";
+        }).join("");
+        html += section("Link Change Monitor", head + crows);
+      }
+    }
+    return html;
+  }
+
   function renderRawToggle(container, result) {
     var wrapper = document.createElement("div");
     wrapper.className = "raw-toggle";
@@ -385,6 +575,7 @@
 
     var body =
       renderVerdict(result) +
+      renderZone(result) +
       renderSummary(result) +
       (result.chain_pattern ? section("Chain Pattern", '<div class="summary">' +
         esc(humanize(result.chain_pattern).toUpperCase()) + "</div>") : "") +
@@ -594,14 +785,17 @@
     if (isQr) html = renderQrNotDecoded(result);
     if (qrDecoded) {
       html += renderVerdict(result);
+      html += renderZone(result);
       html += renderQrContent(result);
       if (qrEr.content_type === "url") html += renderUrlParse(result);
       if (qrEr.content_type === "upi") html += renderUpiFields(result);
       html += renderQrMulti(result);
     }
     if (!isQr) html = renderVerdict(result);
+    html += renderZone(result);
     if (result.input_type === "upi") html += renderUpiFields(result);
     if (result.input_type === "url") html += renderUrlParse(result);
+    if (result.input_type === "link_change") html += renderLinkChange(result);
     html += renderSummary(result);
     html += renderIndicators(result);
     html += renderExplanation(result);
@@ -650,6 +844,20 @@
   }
 
   var qrFile = null;
+
+  function scanLinkChange() {
+    var container = el("lc-result");
+    var current = (el("lc-current").value || "").trim();
+    var baseline = (el("lc-baseline").value || "").trim();
+    if (!current) {
+      container.innerHTML = '<div class="error-state"><div class="err-type">INVALID INPUT</div><div>Enter a link to inspect (or compare).</div></div>';
+      return;
+    }
+    var payload = baseline
+      ? { baseline_url: baseline, current_url: current }
+      : { url: current };
+    postJSON("/api/analyze/link-change", payload, container);
+  }
 
   function setupQr() {
     var input = el("qr-input");
@@ -904,6 +1112,17 @@
       scanText(el("upi-result"), "upi", "upi-input", "/api/analyze/upi");
     });
     el("qr-scan").addEventListener("click", scanQr);
+
+    el("lc-scan").addEventListener("click", scanLinkChange);
+    el("lc-clear").addEventListener("click", function () {
+      el("lc-baseline").value = "";
+      el("lc-current").value = "";
+      el("lc-result").innerHTML = "";
+      el("lc-current").focus();
+    });
+    el("lc-current").addEventListener("keydown", function (e) {
+      if (e.key === "Enter") scanLinkChange();
+    });
 
     el("msg-clear").addEventListener("click", function () { el("msg-input").value = ""; el("msg-count").textContent = "0 characters"; el("msg-result").innerHTML = ""; });
     el("url-clear").addEventListener("click", function () { el("url-input").value = ""; el("url-result").innerHTML = ""; });

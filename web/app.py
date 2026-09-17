@@ -302,6 +302,27 @@ def create_app(**config_kwargs) -> Flask:
             return _error_response(400, "validation", str(exc))
         return jsonify(analyze("chain", stages))
 
+    @app.post("/api/analyze/link-change")
+    def api_link_change():
+        """Link Purifier / Link Safety Monitor (static, offline).
+
+        Body shapes:
+            {"url": "..."}                            -> purify/inspect one link
+            {"baseline_url": "...", "current_url": "..."} -> compare two versions
+        The URL is NEVER opened, resolved or followed; only its structure is
+        inspected/reused through the existing URL Intelligence engine.
+        """
+        try:
+            data = _json_body()
+        except ValueError as exc:
+            return _error_response(400, "validation", str(exc))
+        result = analyze("link_change", data)
+        if not result.get("success") and result.get("status") == "ERROR" \
+                and result.get("error_type") == "validation":
+            return _error_response(400, "validation",
+                                   result.get("error") or "Invalid link-change input.")
+        return jsonify(result)
+
     # ---------------------------------------------------------------- /
     # Global error handling
     # ---------------------------------------------------------------- /

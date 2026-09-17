@@ -1,0 +1,411 @@
+/* =============================================================================
+   SCAMSHIELD — Visual Identity Elevation Layer
+   -----------------------------------------------------------------------------
+   Loaded AFTER style.css. This layer REFINES the product's visual identity
+   through the existing design tokens (CSS custom properties are re-declared
+   here and cascade over the base file) and adds the polished professional
+   shell: sidebar, topbar, hero, dashboard, safety-zone legend, buttons, focus
+   states and responsive refinements.
+
+   CONTRACT SAFETY
+   - style.css is NOT modified; every selector/class the JS toggles keeps its
+     exact name and behavior. This file only adds NEW classes and overrides
+     token VALUES (which no JS reads).
+   - No JS file is touched. All existing el(...) IDs, [data-page], [data-goto],
+     .nav-link, .page, .btn bindings continue to work verbatim.
+   ========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   Design tokens — professional dark cybersecurity palette
+   (re-declared; old values from style.css are overridden by the cascade)
+   ------------------------------------------------------------------------- */
+:root {
+  /* Surfaces — near-black base with card/surface elevation through borders */
+  --bg: #070A0D;
+  --bg-deep: #070A0D;
+  --panel: #0D1217;
+  --panel-2: #121920;
+  --panel-light: #121920;
+
+  /* Borders — restrained, crisp */
+  --border: #202A31;
+  --border-strong: #202A31;
+
+  /* Text — bright primary copy with one muted support tone */
+  --text: #F5F7F8;
+  --text-sec: #89939C;
+  --text-muted: #89939C;
+
+  /* Brand actions — vivid lime primary with a deeper lime secondary */
+  --accent: #B7FF4A;
+  --secondary: #78D64B;
+  --accent-dim: #78D64B;
+  --accent-soft: rgba(183, 255, 74, 0.12);
+
+  /* Threat colors — restrained, ALWAYS paired with text labels (never color-only) */
+  --safe: #35D07F;
+  --safe-soft: rgba(53, 208, 127, 0.14);
+  --warn: #F4C95D;
+  --warn-soft: rgba(244, 201, 93, 0.14);
+  --high: #FF5C5C;
+  --high-soft: rgba(255, 92, 92, 0.14);
+  --crit: #FF5C5C;
+  --crit-soft: rgba(255, 92, 92, 0.16);
+
+  /* Typography — single professional stack + mono for data */
+  --sans: "Segoe UI", "SF Pro Text", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: "Cascadia Mono", "Consolas", "SF Mono", Menlo, monospace;
+
+  /* Geometry */
+  --radius: 8px;
+  --radius-sm: 6px;
+  --focus-ring: 0 0 0 3px rgba(183, 255, 74, 0.35);
+
+  /* Motion — fast, restrained */
+  --fast: 120ms;
+}
+
+/* Focus — visible keyboard focus on every interactive element */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+.btn:focus-visible, .nav-link:focus-visible, input:focus-visible,
+textarea:focus-visible, .dropzone:focus-visible, .side-close:focus-visible,
+.menu-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* Selection */
+::selection { background: var(--accent-soft); color: var(--text); }
+
+/* Scrollbar — subtle, not gaudy */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 6px; border: 2px solid var(--bg); }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* =============================================================================
+   SHELL — SIDEBAR (professional product navigation)
+   ============================================================================= */
+.titlebar { background: transparent; }
+.scroll-y { scrollbar-width: thin; }
+
+/* Topbar — compact + local-analysis status */
+.topbar {
+  background: rgba(7, 10, 13, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+}
+.top-title h1 { letter-spacing: 3px; font-weight: 700; font-size: 1.05rem; }
+.top-sub { color: var(--text-muted); font-size: 0.72rem; letter-spacing: 0.4px; }
+.top-status { font-family: var(--mono); }
+
+/* LOCAL ANALYSIS status — subtle treatment, not a huge badge */
+.top-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 1.4px;
+}
+.top-line .dot { width: 7px; height: 7px; }
+.top-title { text-align: left; }
+#sys-online-text { letter-spacing: 1.4px; }
+.top-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+/* Sidebar — crisp, focused, modern */
+.side-mark {
+  background: var(--accent);
+  color: var(--bg);
+  box-shadow: none;
+  letter-spacing: 2px;
+  font-weight: 800;
+}
+.nav-link .nav-icon { color: var(--secondary); }
+.nav-link {
+  border-radius: 6px;
+  letter-spacing: 0.4px;
+  transition: background var(--fast), color var(--fast), border-color var(--fast);
+}
+.nav-link:hover { background: var(--panel-2); }
+.nav-link.is-active {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-color: var(--accent-dim);
+}
+.nav-link.is-active .nav-icon { color: var(--accent); }
+
+/* =============================================================================
+   HERO — command center opening
+   ============================================================================= */
+.hero-title {
+  font-size: 2.35rem;
+  letter-spacing: 4px;
+  font-weight: 800;
+}
+.hero {
+  background: var(--panel);
+  box-shadow: none;
+}
+.hero-kicker { letter-spacing: 3px; color: var(--accent); }
+.hero-tag { color: var(--text); font-size: 1.05rem; }
+.hero-desc { color: var(--text-sec); max-width: 620px; }
+.hero-scans-label {
+  margin: 18px 0 8px;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 2px;
+  color: var(--text-sec);
+}
+
+/* =============================================================================
+   DASHBOARD — honest, data-driven; empty states, never invented stats
+   ============================================================================= */
+
+/* Primary command: "Analyze Something" */
+.dash-cta {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+.dash-cta .btn { margin: 0; }
+
+/* Dashboard grid of honest, real status sections */
+.dash-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  margin-top: 6px;
+}
+.dash-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.dash-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.dash-card-title {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0;
+}
+.dash-card-sub { color: var(--text-muted); font-size: 0.78rem; line-height: 1.5; margin: 0; }
+.dash-empty {
+  border: 1px dashed var(--border-strong);
+  border-radius: 6px;
+  padding: 14px 14px 12px;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.6px;
+}
+.dash-empty b { color: var(--text); font-weight: 600; }
+
+/* =============================================================================
+   SAFETY ZONE LEGEND — reusable, color + TEXT always paired
+   ============================================================================= */
+.zone-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+.z-chip {
+  border-left-width: 3px;
+  font-size: 0.72rem;
+  letter-spacing: 0.4px;
+}
+.z-chip b { letter-spacing: 1px; }
+.z-green { border-left-color: var(--safe); }
+.z-yellow { border-left-color: var(--warn); }
+.z-red { border-left-color: var(--crit); }
+
+/* Threat status — color is ALWAYS accompanied by a text label */
+.pill, .zone-label, .verdict-status, .sys-state {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.zone-block .zone-label { font-weight: 700; }
+.pill.critical { background: var(--crit-soft); }
+.sev.critical { font-weight: 700; }
+.verdict.critical { border-left-width: 6px; }
+
+/* Status dots and alert borders use the selected palette, not legacy values */
+.dot.ok { box-shadow: 0 0 6px rgba(53, 208, 127, 0.55); }
+.dot.warn { box-shadow: 0 0 6px rgba(244, 201, 93, 0.55); }
+.dot.err { box-shadow: 0 0 6px rgba(255, 92, 92, 0.55); }
+.warning { border-color: rgba(244, 201, 93, 0.38); }
+.error-state { border-color: rgba(255, 92, 92, 0.45); }
+
+/* =============================================================================
+   BUTTONS — primary / secondary / quiet / danger with hover, focus, disabled
+   ============================================================================= */
+.btn {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 6px;
+  transition: background var(--fast), color var(--fast), border-color var(--fast);
+}
+.btn {
+  background: var(--panel-2);
+  border-color: var(--border);
+  color: var(--text);
+}
+.btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+.btn.primary:hover {
+  background: var(--secondary);
+  border-color: var(--secondary);
+  color: var(--bg);
+}
+.btn.primary:disabled:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Quiet / text-only action */
+.btn.quiet {
+  background: transparent;
+  border-color: transparent;
+  color: var(--accent);
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.btn.quiet:hover { background: var(--accent-soft); border-color: transparent; }
+
+/* Danger (destructive) */
+.btn.danger {
+  border-color: var(--crit);
+  color: var(--crit);
+}
+.btn.danger:hover { background: var(--crit-soft); }
+.btn.danger.primary { background: var(--crit); border-color: var(--crit); color: var(--bg); }
+.btn.danger.primary:hover { filter: brightness(1.08); }
+
+/* =============================================================================
+   PANELS / CARDS / RESULTS — strong hierarchy with borders, not glow
+   ============================================================================= */
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.panel.workspace { background: var(--panel); }
+.panel-title {
+  letter-spacing: 1.6px;
+  color: var(--accent);
+  font-size: 0.72rem;
+}
+.result { border-radius: var(--radius); }
+
+/* Verdict blocks — left-accent by threat level, labeled */
+.verdict {
+  border-radius: var(--radius);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 18px;
+}
+.verdict.low   { border-left: 4px solid var(--safe); }
+.verdict.medium{ border-left: 4px solid var(--warn); }
+.verdict.high  { border-left: 4px solid var(--high); }
+.verdict.critical { border-left: 4px solid var(--crit); }
+.verdict-status { font-weight: 700; letter-spacing: 0.5px; }
+.verdict.low .verdict-status   { color: var(--safe); }
+.verdict.medium .verdict-status{ color: var(--warn); }
+.verdict.high .verdict-status  { color: var(--high); }
+.verdict.critical .verdict-status { color: var(--crit); }
+
+/* =============================================================================
+   FORMS
+   ============================================================================= */
+.field-label { letter-spacing: 1.2px; font-family: var(--mono); font-size: 0.72rem; color: var(--text-sec); }
+textarea, input[type="text"], input[type="url"], input[type="tel"] {
+  background: var(--bg-deep);
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  transition: border-color var(--fast);
+}
+textarea:focus, input[type="text"]:focus, input[type="url"]:focus, input[type="tel"]:focus {
+  border-color: var(--accent);
+}
+
+/* Dropzone — refined */
+.dropzone { border-radius: var(--radius); transition: border-color var(--fast), background var(--fast); }
+
+/* =============================================================================
+   PRIVACY / OFFLINE NOTE — honest local analysis identity
+   ============================================================================= */
+.privacy-note {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  color: var(--text-sec);
+  font-size: 0.8rem;
+}
+.notice {
+  border-left: 3px solid var(--accent);
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.4px;
+}
+
+/* =============================================================================
+   RESPONSIVE REFINEMENTS — desktop / tablet / mobile, no horizontal overflow
+   ============================================================================= */
+@media (max-width: 900px) {
+  .top-status { align-items: flex-start; }
+  .hero-title { font-size: 1.9rem; letter-spacing: 3px; }
+  .hero { padding: 28px 22px; }
+}
+@media (max-width: 620px) {
+  .hero { padding: 22px 16px; }
+  .hero-title { font-size: 1.6rem; letter-spacing: 2px; }
+  .dash-grid { grid-template-columns: 1fr; }
+  .top-title h1 { font-size: 0.95rem; }
+  .top-title p { display: none; }
+  .btn { white-space: nowrap; }
+}
+
+/* Reduced motion — fast + restrained by default, no decorative animation */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

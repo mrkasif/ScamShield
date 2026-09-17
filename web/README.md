@@ -25,6 +25,7 @@ web/
 | Overview | hero + primary actions, capability grid (from real engines), analysis architecture flow |
 | Message Intelligence | textarea + counter, rule-based verdict, indicators, explanation, recommendations, URL evidence, **Local ML signal kept separate** |
 | URL Intelligence | domain/parse table, URL threat indicators, explanation, recommendations, static-only security notice |
+| Link Purifier | baseline + current inputs, purified/static-only representation (plain text, never clickable), purifier signals, hidden components, destination analysis (`VERIFIED`/`SUSPICIOUS`/`UNKNOWN`), non-clickable safe action, change monitor with RISK UP/DOWN/NEUTRAL rows, change impact + risk delta |
 | QR Analyzer | drag-and-drop upload, image preview, decoded content, content type, sub-analysis (URL/UPI/text), multi-QR states, error states |
 | UPI Analyzer | structured payment-request fields, verdict, indicators, explanation, recommendation, no-payment notice |
 | Attack Chain | stage queue, horizontal (desktop) / vertical (mobile) chain flow, relationships, classification banner |
@@ -79,14 +80,26 @@ static-serving capable — just serve this directory behind a WSGI server.
 | `POST` | `/api/analyze/upi` | `{"upi": "..."}` | unified UPI result (static, never executed) |
 | `POST` | `/api/analyze/qr` | multipart `qr_image` file | unified QR result (local decode) |
 | `POST` | `/api/analyze/chain` | `{"stages": [...]}` | unified chain result |
+| `POST` | `/api/analyze/link-change` | `{"url": "..."}` \| `{"baseline_url": "...", "current_url": "..."}` | unified link-change result (purify or compare) |
 
 Every analyze endpoint returns the **real, unchanged** unified analyzer result:
 `success, input_type, risk_score, risk_level, is_suspicious, scam_type,
 confidence, summary, indicators, explanation, recommendations, evidence,
 engine_results, warnings` (plus `classification/chain_pattern/stages/
-relationships` for chain). A 400 (`error_type: "validation"`) is returned for
-malformed input, 413 for oversized QR uploads, and 404/405 for unknown
-routes/methods.
+relationships` for chain, and `mode/comparison/purifier/change_impact/
+risk_delta/risk_increased/original_url_analysis/destination_analysis/
+safe_destination` for link_change). Every result also carries the
+Safety-Zone presentation keys: `zone`, `zone_label`, `zone_description`,
+`recommended_action`, `risk_assessment` and `risk_breakdown` — all derived from
+the existing authoritative score (never a second scorer). A 400
+(`error_type: "validation"`) is returned for malformed input, 413 for oversized
+QR uploads, and 404/405 for unknown routes/methods.
+
+The page shows an always-available **SAFETY ZONES** legend (GREEN 0-24 /
+YELLOW 25-59 / RED 60-100) and every result includes a zone banner with the
+score, zone label, recommended action, "Why this is risky" reasons and a risk
+factor breakdown — for message, URL, UPI, QR, chain and link-change results
+alike.
 
 ## QR security handling
 
@@ -105,7 +118,8 @@ routes/methods.
   (`test_flask_layer_makes_no_network_requests`) that proves every endpoint
   completes with sockets disabled.
 - URLs are **never opened/visited/resolved/downloaded**; analysis is static and
-  structural only.
+  structural only. The Link Purifier never repairs or generates links — it only
+  normalizes + inspects and shows submitted URLs as plain text.
 - QR content and UPI URIs are **never executed**; payments are never initiated.
 - No authentication, no cookies/sessions of consequence, no database. Private
   input is processed in-memory and never persisted (QR temp files are deleted).
@@ -147,5 +161,8 @@ routes/methods.
 ## Tests
 
 ```bash
-python -m pytest tests/test_flask_api.py tests/test_web_scenarios.py -q   # 52 tests
+python -m pytest tests/test_flask_api.py tests/test_web_scenarios.py -q   # 56 tests (incl. link-change endpoint + no-network guards)
+python -m pytest tests/test_safetyzones.py -q                              # 37 safety-zone / explainable-risk tests
+python -m pytest tests/test_link_change.py -q                              # 37 link-change engine tests
+python -m pytest tests/test_safe_destination.py -q                         # safe-destination tests
 ```
