@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
   <title>ScamShield — Indian Digital Scam Intelligence</title>
-  <link rel="stylesheet" href="/static/style.css">
-  <link rel="stylesheet" href="/static/identity.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css', v=asset_version) }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='identity.css', v=asset_version) }}">
   <script id="research-payload" type="application/json">{{ research_payload | tojson | safe }}</script>
 </head>
 <body>
@@ -248,6 +248,6 @@
     </div>
   </div>
 
-  <script src="/static/app.js"></script>
+  <script src="{{ url_for('static', filename='app.js', v=asset_version) }}"></script>
 </body>
 </html>

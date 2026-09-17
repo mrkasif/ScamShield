@@ -43,10 +43,14 @@ def test_index_page_served(client) -> None:
     r = client.get("/")
     assert r.status_code == 200
     assert r.content_type.startswith("text/html")
+    assert r.headers.get("Cache-Control") == "no-store"
     html = r.get_data(as_text=True)
     assert "ScamShield" in html
     assert "app.js" in html
     assert "style.css" in html
+    assert "identity.css" in html
+    # Frontend assets are fingerprinted so deployments cannot reuse stale CSS/JS.
+    assert "v=" in html
 
 
 def test_health_endpoint(client) -> None:

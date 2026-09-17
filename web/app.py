@@ -30,6 +30,7 @@ Deployment compatibility:
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import sys
@@ -44,7 +45,7 @@ for _p in (_REPO_ROOT, _REPO_ROOT / "src"):
     if str(_p) not in sys.path:
         sys.path.insert(0, str(_p))
 
-from flask import Flask, jsonify, render_template, request  # noqa: E402
+from flask import Flask, jsonify, make_response, render_template, request  # noqa: E402
 
 from scamshield import __version__ as SHIELD_VERSION  # noqa: E402
 from scamshield import analyze, analyze_chain  # noqa: E402
@@ -153,6 +154,28 @@ def load_research_payload() -> dict | None:
     }
 
 
+_STATIC_ASSETS = ("style.css", "identity.css", "app.js")
+
+
+def _static_asset_version(static_dir: Path) -> str:
+    """Fingerprint the served CSS/JS bundle for cache-busting asset URLs.
+
+    The digest changes whenever any served frontend asset changes, so browsers
+    and CDNs cannot keep applying a stale stylesheet or script after a new
+    deployment. Missing files never break the app; they are simply omitted.
+    """
+    digest = hashlib.sha1()
+    for name in _STATIC_ASSETS:
+        try:
+            data = (static_dir / name).read_bytes()
+        except OSError:
+            continue
+        digest.update(name.encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(data)
+    return digest.hexdigest()[:12]
+
+
 def _env_bool(name: str, default: str = "0") -> bool:
     return os.environ.get(name, default).strip().lower() in {"1", "true", "yes", "on"}
 
@@ -203,6 +226,7 @@ def create_app(**config_kwargs) -> Flask:
     app.config.setdefault("MAX_CONTENT_LENGTH", MAX_QR_UPLOAD_BYTES + 1024)
     app.json.ensure_ascii = False
     app.json.sort_keys = False
+    asset_version = _static_asset_version(Path(app.static_folder))
 
     # ------------------------------------------------------------------ /
     # Health + UI
@@ -210,7 +234,17 @@ def create_app(**config_kwargs) -> Flask:
 
     @app.get("/")
     def index():
-        return render_template("index.html", research_payload=load_research_payload())
+        # The dynamic shell is never cached: after each deployment it carries
+        # fresh fingerprinted CSS/JS URLs, preventing stale production styling.
+        response = make_response(render_template(
+            "index.html",
+            research_payload=load_research_payload(),
+            asset_version=asset_version,
+        ))
+        response.headers["Cache-Control"] = "no-store"
+        response.headers["Pragma"] = "no-cache"
+        response.headers["Expires"] = "0"
+        return response
 
     @app.get("/api/health")
     def health():

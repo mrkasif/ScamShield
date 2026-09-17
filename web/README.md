@@ -68,6 +68,9 @@ gunicorn web.app:app          # or uwsgi / waitress on any PaaS
 No database, no authentication, no external APIs, no cloud-dependent service,
 no client-side dependencies (no build step, no bundler). The app is fully
 static-serving capable — just serve this directory behind a WSGI server.
+The dynamic shell is served with `Cache-Control: no-store`, while CSS/JS URLs
+carry a content-derived fingerprint, so a redeploy cannot leave a browser
+using stale styling or scripts.
 
 ## API endpoints
 
